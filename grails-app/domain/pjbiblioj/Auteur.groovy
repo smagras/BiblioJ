@@ -3,7 +3,7 @@ package pjbiblioj
 class Auteur {
 
     String nom, prenom
-	Set livres
+	Set livres = new HashSet()
 	
 	static belongsTo = Livre
 	static hasMany = [livres:Livre]

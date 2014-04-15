@@ -5,7 +5,7 @@ class Livre {
     String titre
 	int nombreExemplaires, nombreExemplairesDisponibles
 	TypeDocument typeDoc
-	Set auteurs
+	Set auteurs = new HashSet()
 	
 	static belongsTo = Reservation
 	static hasMany = [auteurs:Auteur]
