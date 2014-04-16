@@ -1,6 +1,6 @@
 package pjbiblioj
 
-class RechercheController {
+class RechercherController {
 
 	def scaffold = Livre
 	
