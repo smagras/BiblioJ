@@ -1,4 +1,7 @@
-package pjbiblioj
+package com.matu.services
+
+import pjbiblioj.Auteur;
+import pjbiblioj.Livre;
 
 class CSVManager {
 	def adresseFichier;

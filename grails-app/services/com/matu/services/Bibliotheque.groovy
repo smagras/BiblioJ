@@ -1,4 +1,7 @@
-package pjbiblioj
+package com.matu.services
+
+import pjbiblioj.Livre;
+import pjbiblioj.TypeDocument;
 
 class Bibliotheque {
 
