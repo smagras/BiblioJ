@@ -1,4 +1,4 @@
-package com.matu.services
+package com.biblioj.services
 
 import pjbiblioj.Auteur;
 import pjbiblioj.Livre;
