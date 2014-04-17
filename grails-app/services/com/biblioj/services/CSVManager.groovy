@@ -27,17 +27,15 @@ class CSVManager {
 		
 		def auteur = new Auteur()
 
-		if (caseAuteur.contains(",")){
+		if (caseAuteur && caseAuteur.contains(',')){
 			
 			caseAuteur.splitEachLine(','){ valeurs ->
-				
 				auteur.setNom(valeurs[0])
 				auteur.setPrenom(valeurs[1])
 				return auteur
 			}
 		}
-		
-		return auteur
+		else return null
 		
 	}
 	
@@ -57,13 +55,16 @@ class CSVManager {
 				livre.setTitre(row[3])
 				
 				
-				Auteur auteurDuLivre =  convertCaseCSVenAuteur(row[4])
-				println auteurDuLivre.getNom() + "" + auteurDuLivre.getPrenom()
-				livre.getAuteurs().add(auteurDuLivre);
+				Auteur auteurDuLivre = convertCaseCSVenAuteur(row[4])
+				if (auteurDuLivre){
+					//println auteurDuLivre.getNom() + "" + auteurDuLivre.getPrenom()
+					livre.getAuteurs().add(auteurDuLivre);
+				}
 				
 				listeDeFichier.add(livre);
 			 }
 			
+			// on supprime la ligne de présentation
 			listeDeFichier.remove(0)
 		}
 		

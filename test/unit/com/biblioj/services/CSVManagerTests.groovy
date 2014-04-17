@@ -12,19 +12,18 @@ class CSVManagerTests {
 	@Test
 	public void testGetLivres() {
 		def monCSVManager = new CSVManager()
-		println "gogog"
+
 		List<Livre> listeDeLivreDuCSV = monCSVManager.getLivres()
 		
-		println listeDeLivreDuCSV.get(0).getTitre()
+		Livre premierLivre = listeDeLivreDuCSV.get(0)
 		
-		//HashSet<Auteur> listeAuteurs = listeDeLivreDuCSV.get(0).getAuteurs()
-		//listeAuteurs.getAt("")
-		/*for (Auteur auteur : listeAuteurs){ 
-			println auteur.getNom()
-			println auteur.getPrenom()
-		}*/
-		//fail("Not yet implemented");
-		//succes("eee")
+		assert false == listeDeLivreDuCSV.empty  : "Pas de livres"
+		assert "Rien ne s'oppose à la nuit : roman" == premierLivre.getTitre() : "Pas de titre"
+		
+		HashSet<Auteur> listeAuteurs = premierLivre.getAuteurs()
+
+		assert 1 == listeAuteurs.size() : "Il n'y a pas 1 auteur"	
+
 	}
 
 }
