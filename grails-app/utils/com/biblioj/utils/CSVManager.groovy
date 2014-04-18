@@ -1,4 +1,4 @@
-package com.biblioj.services
+package com.biblioj.utils
 
 
 import pjbiblioj.Auteur;
@@ -51,7 +51,7 @@ class CSVManager {
 			
 			fichierCSV.splitEachLine(';') { row ->	
 				
-				Livre livre = new Livre();
+				Livre livre = new Livre(nombreExemplaires:7,nombreExemplairesDisponibles:7);
 				livre.setTitre(row[3])
 				
 				

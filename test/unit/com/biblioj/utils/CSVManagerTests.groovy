@@ -1,9 +1,12 @@
 
-package com.biblioj.services;
+package com.biblioj.utils;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import com.biblioj.utils.CSVManager;
+
 import pjbiblioj.Auteur
 import pjbiblioj.Livre
 
