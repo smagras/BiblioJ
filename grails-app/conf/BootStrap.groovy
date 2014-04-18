@@ -18,7 +18,7 @@ class BootStrap {
 		
 		
 		Livre l2 = new Livre(titre:"Ulysse",nombreExemplaires:2,nombreExemplairesDisponibles:1,typeDoc:typeDoc)
-		l2.addToAuteurs(auteur1)
+		l2.addToAuteurs(auteur2)
 		l2.save()
 		
 		
@@ -28,7 +28,7 @@ class BootStrap {
 		
 		
 		Livre l4 = new Livre(titre:"Toto",nombreExemplaires:2,nombreExemplairesDisponibles:1,typeDoc:typeDoc)
-		l4.addToAuteurs(auteur1)
+		l4.addToAuteurs(auteur2)
 		l4.save()
 		
 		
@@ -38,7 +38,7 @@ class BootStrap {
 		
 		
 		Livre l6 = new Livre(titre:"Grosminet",nombreExemplaires:2,nombreExemplairesDisponibles:1,typeDoc:typeDoc)
-		l6.addToAuteurs(auteur1)
+		l6.addToAuteurs(auteur2)
 		l6.save()
 		
 		
