@@ -1,5 +1,6 @@
 import pjbiblioj.Auteur
 import pjbiblioj.Livre
+import pjbiblioj.Panier
 import pjbiblioj.TypeDocument
 
 class BootStrap {
@@ -44,7 +45,10 @@ class BootStrap {
 		
 		//Livre.rechercherLivreTitre("Ulysse")
 		//Livre.rechercherLivreTypeDoc(typeDoc)
-		Livre.rechercherLivreAuteur("Hugo")
+		//Livre.rechercherLivreAuteur("Hugo")
+		
+		Panier p = new Panier()
+		p.save()
     }
     def destroy = {
     }
