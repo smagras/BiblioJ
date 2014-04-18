@@ -47,7 +47,9 @@ class BootStrap {
 		//Livre.rechercherLivreTypeDoc(typeDoc)
 		//Livre.rechercherLivreAuteur("Hugo")
 		
-		Panier p = new Panier()
+		Panier p = new Panier(nom:"steve")
+		p.addLivres([l5,l6])
+		p.suppLivre(l5)
 		p.save()
     }
     def destroy = {
