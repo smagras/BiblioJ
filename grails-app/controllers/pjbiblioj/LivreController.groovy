@@ -27,34 +27,21 @@ class LivreController {
 		println "ggg " + u.getMotDePasse()
 		
 		utilisateurService.deconnecter(session)
-		
-		 String typeDoc1 = params["typeDoc"]
-		 println typeDoc1
 		 
-		 params.valeurFun = "sdfdsfdsfdfs"
+		params.valeurFun = "sdfdsfdsfdfs"
 		
 
-		LivreService servicePourLivre = new LivreService()
-		String typeDocLivre = request.queryString
+		String typeDocLivre = params["typeDoc"]
 		
 		if (typeDocLivre != null) {
-			typeDocLivre = typeDocLivre.substring(8)
-			String[] str = typeDocLivre.split("\\+")
-			typeDocLivre = ""
 			
-			for (int i=0; i<str.length; i++) { 
-				typeDocLivre += str[i] + " "
-			}
-			
-			typeDocLivre = typeDocLivre.trim()
-			//println typeDocLivre
+			LivreService servicePourLivre = new LivreService()
 			TypeDocument typeDoc = new TypeDocument(intitule:typeDocLivre)
 			
 			def listeDesLivres = servicePourLivre.rechercherLivreTypeDoc(typeDoc)
-			
-			//println listeDesLivres
-			request.setAttribute("livres", listeDesLivres)
+			[livres: listeDesLivres]
 		}
+		
 	}
 	
 

@@ -1,4 +1,4 @@
-<%@ page import="pjbiblioj.Livre"%>
+<%@ page import="pjbiblioj.Livre" %>
 
 <!DOCTYPE html>
 <html>
@@ -39,16 +39,13 @@
 					
 					<input type='submit' value='rerchercher typeDoc'  width=250 class='coolButton' />
 					<%
-						List<Livre> listeLivres = params.get("livres")
+						List<Livre> listeLivres = livres
 						
-						if (listeLivres != null) out.print(listeLivres)
-						else out.print("<p>listeLivres null </p>")
-
-						List<Livre> listeLivres = request.getParameter("livres");
-						System.out.println(listeLivres)
+						/*if (listeLivres != null) out.print("<p> listeLivres </p>")
+						else out.print("<p>listeLivres null </p>")*/
 						
 						for (Livre l : listeLivres) {
-							out.print(l.titre + " " + l.nombreExemplairesDisponibles);
+							out.print("<p>"+ l.titre + " " + l.nombreExemplairesDisponibles + "</p>");
 						}
 					 %>
 				</p>
