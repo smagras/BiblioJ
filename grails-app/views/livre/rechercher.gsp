@@ -43,6 +43,9 @@
 						
 						if (listeLivres != null) out.print(listeLivres)
 						else out.print("<p>listeLivres null </p>")
+
+						List<Livre> listeLivres = request.getParameter("livres");
+						System.out.println(listeLivres)
 						
 						for (Livre l : listeLivres) {
 							out.print(l.titre + " " + l.nombreExemplairesDisponibles);
