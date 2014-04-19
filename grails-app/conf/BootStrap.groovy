@@ -2,6 +2,7 @@ import pjbiblioj.Auteur
 import pjbiblioj.Livre
 import pjbiblioj.Panier
 import pjbiblioj.TypeDocument
+import pjbiblioj.Utilisateur
 
 class BootStrap {
 
@@ -12,7 +13,7 @@ class BootStrap {
 		Auteur auteur1 = new Auteur(nom:"Pommaux",prenom:"Yvan").save()
 		Auteur auteur2 = new Auteur(nom:"Hugo",prenom:"Victor").save()
 		
-		Livre livre1 = new Livre(titre:"Ulysse",nombreExemplaires:10,nombreExemplairesDisponibles:3,typeDoc:typeDoc)
+		Livre livre1 = new Livre(titre:"Ulysse",nombreExemplaires:10,nombreExemplairesDisponibles:11,typeDoc:typeDoc)
 		livre1.addToAuteurs(auteur1)
 		livre1.addToAuteurs(auteur2)
 		livre1.save()
@@ -47,10 +48,13 @@ class BootStrap {
 		//Livre.rechercherLivreTypeDoc(typeDoc)
 		//Livre.rechercherLivreAuteur("Hugo")
 		
-		Panier p = new Panier(nom:"steve")
+		Panier p = new Panier(nom:"paul")
 		p.addLivres([l5,l6])
 		p.suppLivre(l5)
 		p.save()
+		
+		Utilisateur paul = new Utilisateur(nom:"paul",identifiant:"Polodu12",motDePasse:"007",panier:p)
+		paul.save()
     }
     def destroy = {
     }

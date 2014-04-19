@@ -15,7 +15,9 @@ class Livre {
     static constraints = {
 		titre nullable: false
 		nombreExemplaires min: 0
-		nombreExemplairesDisponibles min: 0
+		nombreExemplairesDisponibles min: 0, validator: { val, obj ->
+			return obj.nombreExemplaires >= val
+		}
 		typeDoc nullable: true
 		auteurs nullable: false
     }
