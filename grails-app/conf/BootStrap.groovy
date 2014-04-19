@@ -1,5 +1,6 @@
 
 import com.biblioj.services.LivreService
+import com.biblioj.services.UtilisateurService
 import pjbiblioj.Auteur
 import pjbiblioj.Livre
 import pjbiblioj.Panier
@@ -45,9 +46,9 @@ class BootStrap {
 		l6.addToAuteurs(auteur2)
 		l6.save(flush: true)
 		
-		LivreService service = new LivreService()
+		/*LivreService service = new LivreService()
 		def listeLivre = service.rechercherLivreTitre("smin")
-		println listeLivre.titre
+		println listeLivre.titre*/
 		//Livre.rechercherLivreTypeDoc(typeDoc)
 		//Livre.rechercherLivreAuteur("Hugo")
 		
@@ -56,8 +57,15 @@ class BootStrap {
 		p.suppLivre(l5)
 		p.save(flush: true)
 		
-		Utilisateur paul = new Utilisateur(nom:"paul",identifiant:"Polodu12",motDePasse:"007",panier:p)
+		Utilisateur paul = new Utilisateur(nom:"paul",identifiant:"Polodu12",motDePasse:"pass",panier:p)
 		paul.save(flush: true)
+		
+		Utilisateur steve = new Utilisateur(nom:"steve",identifiant:"mgs",motDePasse:"pass",panier:p)
+		steve.save(flush: true)
+		
+	/*	UtilisateurService utilisateurService = new UtilisateurService()
+		utilisateurService.connecter("mgs", "pass",session)*/
+		
     }
     def destroy = {
     }
