@@ -28,6 +28,11 @@ class LivreController {
 		
 		utilisateurService.deconnecter(session)
 		
+		 String typeDoc1 = params["typeDoc"]
+		 println typeDoc1
+		 
+		 params.valeurFun = "sdfdsfdsfdfs"
+		
 
 		LivreService servicePourLivre = new LivreService()
 		String typeDocLivre = request.queryString

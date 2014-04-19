@@ -40,9 +40,7 @@
 					<input type='submit' value='rerchercher typeDoc'  width=250 class='coolButton' />
 					<%
 						List<Livre> listeLivres = request.getParameter("livres");
-						
-						if (listeLivres != null) out.print(listeLivres)
-						else out.print("<p>listeLivres null </p>")
+						System.out.println(listeLivres)
 						
 						for (Livre l : listeLivres) {
 							out.print(l.titre + " " + l.nombreExemplairesDisponibles);
