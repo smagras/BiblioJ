@@ -60,11 +60,16 @@ class LivreServiceTests {
 	@Test
 	public void testRechercherLivreTypeDoc() {
 		LivreService service = new LivreService()
-		def livres = service.rechercherLivreTypeDoc(typeDoc2)
+		List<Livre> livres = service.rechercherLivreTypeDoc(typeDoc1)
 		
 		livres.each { l->
-			println l.getTitre()
+			println 
 		}
+		assert "Petit Bateau".equals(livres.get(0).getTitre() )
+		assert "Grand Bateau".equals( livres.get(1).getTitre() )
+		assert "Moyen Bateau".equals( livres.get(2).getTitre() )
+		assert "Tata".equals( livres.get(3).getTitre() )
+	
 		assert true == true
 		
 	}
