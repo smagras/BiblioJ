@@ -1,5 +1,6 @@
 package pjbiblioj
 
+import com.biblioj.services.LivreService
 import org.springframework.dao.DataIntegrityViolationException
 
 class LivreController {
@@ -16,7 +17,11 @@ class LivreController {
     }
 	
 	def rechercher(){
+		LivreService servicePourLivre = new LivreService()
+		TypeDocument typeDoc = new TypeDocument(intitule:"Nouveauté")
+		def listeDesLivres = servicePourLivre.rechercherLivreTypeDoc(typeDoc)
 		
+		println listeDesLivres
 	}
 	
 

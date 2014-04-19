@@ -17,6 +17,7 @@ class LivreServiceTests {
 	TypeDocument typeDoc2
 	
 	
+	
 	@Before
 	public void setUp(){
 		typeDoc1 = new TypeDocument(intitule:"Roman")

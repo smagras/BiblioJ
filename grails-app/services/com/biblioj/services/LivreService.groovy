@@ -16,7 +16,16 @@ class LivreService {
 	 */
 	def rechercherLivreTypeDoc(TypeDocument typeDoc) {
 		def livresEnFonctionDuTypeDeDoc = new ArrayList<Livre>()
-		Livre.findAllByTypeDoc(typeDoc, [max: 5]).each {
+		
+		def listeTypeDocEquivalant = TypeDocument.findAll {
+			eq("intitule", typeDoc.getIntitule())
+
+		}
+
+		def typeDansLaBDEquivalant = listeTypeDocEquivalant.get(0)
+
+		
+		Livre.findAllByTypeDoc(typeDansLaBDEquivalant, [max: 5]).each {
 			livresEnFonctionDuTypeDeDoc.add(it)
 		}
 		return livresEnFonctionDuTypeDeDoc
