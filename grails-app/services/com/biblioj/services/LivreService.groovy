@@ -19,15 +19,16 @@ class LivreService {
 		
 		def listeTypeDocEquivalant = TypeDocument.findAll {
 			eq("intitule", typeDoc.getIntitule())
-
 		}
 
-		def typeDansLaBDEquivalant = listeTypeDocEquivalant.get(0)
-
+		if (!listeTypeDocEquivalant.isEmpty()) {
+			def typeDansLaBDEquivalant = listeTypeDocEquivalant.get(0)
+	
+			Livre.findAllByTypeDoc(typeDansLaBDEquivalant, [max: 5]).each {
+				livresEnFonctionDuTypeDeDoc.add(it)
+			}
+		}
 		
-		Livre.findAllByTypeDoc(typeDansLaBDEquivalant, [max: 5]).each {
-			livresEnFonctionDuTypeDeDoc.add(it)
-		}
 		return livresEnFonctionDuTypeDeDoc
 	}
 	

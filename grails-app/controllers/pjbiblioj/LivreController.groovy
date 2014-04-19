@@ -16,12 +16,16 @@ class LivreController {
         [livreInstanceList: Livre.list(params), livreInstanceTotal: Livre.count()]
     }
 	
-	def rechercher(){
+	def rechercher() {
 		LivreService servicePourLivre = new LivreService()
-		TypeDocument typeDoc = new TypeDocument(intitule:"Nouveauté")
+		
+		String typeDocLivre = request.getParameter("typeDoc")
+		TypeDocument typeDoc = new TypeDocument(intitule:typeDocLivre)
+		
 		def listeDesLivres = servicePourLivre.rechercherLivreTypeDoc(typeDoc)
 		
 		println listeDesLivres
+		request.setAttribute("livres", listeDesLivres)
 	}
 	
 

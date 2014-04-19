@@ -13,7 +13,7 @@ class Livre {
 	static hasMany = [auteurs:Auteur]
 	
     static constraints = {
-		titre nullable: false
+		titre blank: false, nullable: false
 		nombreExemplaires min: 0
 		nombreExemplairesDisponibles min: 0, validator: { val, obj ->
 			return obj.nombreExemplaires >= val

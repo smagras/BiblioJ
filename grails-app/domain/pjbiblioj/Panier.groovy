@@ -4,10 +4,12 @@ class Panier {
 
 	String nom
 	Set livres = new HashSet()
+	
+	static belongsTo = Utilisateur
 	static hasMany = [livres:Livre]
 
     static constraints = {
-		nom nullable: false
+		nom blank: false, nullable: false
 		livres nullable: true
     }
 	

@@ -26,13 +26,25 @@
 			<form name="input" action="" method="get">
 				<h3>Trouver un livre</h3>
 				<p>
-
-					<select class="textbox" onchange='this.form.submit()'
-						onMouseOver="hide()" style='width: 300px; height: 40px;'
-						name="idLigne">
-
-					</select>
-
+					<input class="textbox" type="text" value="<%
+					String typeDoc = request.getParameter("typeDoc");
+					
+					if (typeDoc != null){
+						out.print(typeDoc);
+					}
+					%>" name="destination" />
+					
+					
+					
+					
+					<input type='submit' value='rerchercher typeDoc'  width=250 class='coolButton' />
+					<%
+						List<Livre> listeLivres = request.getParameter("livres");
+						
+						for (Livre l : listeLivres) {
+							out.print(l.titre + " " + l.nombreExemplairesDisponibles);
+						}
+					 %>
 				</p>
 
 

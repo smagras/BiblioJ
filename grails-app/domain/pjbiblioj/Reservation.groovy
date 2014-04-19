@@ -6,8 +6,6 @@ class Reservation {
 	Date dateReservation
 	
 	static hasMany = [livres:Livre]
-	
-	
 	static constraints = {
     }
 }
