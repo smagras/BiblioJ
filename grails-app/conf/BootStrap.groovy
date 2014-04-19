@@ -1,4 +1,5 @@
 
+import com.biblioj.services.LivreService
 import pjbiblioj.Auteur
 import pjbiblioj.Livre
 import pjbiblioj.Panier
@@ -44,8 +45,9 @@ class BootStrap {
 		l6.addToAuteurs(auteur2)
 		l6.save(flush: true)
 		
-		
-		//Livre.rechercherLivreTitre("Ulysse")
+		LivreService service = new LivreService()
+		def listeLivre = service.rechercherLivreTitre("smin")
+		println listeLivre.titre
 		//Livre.rechercherLivreTypeDoc(typeDoc)
 		//Livre.rechercherLivreAuteur("Hugo")
 		

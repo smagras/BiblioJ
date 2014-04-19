@@ -15,7 +15,7 @@ class LivreServiceTests {
 	
 	TypeDocument typeDoc1
 	TypeDocument typeDoc2
-	
+
 	
 	@Before
 	public void setUp(){
@@ -59,6 +59,7 @@ class LivreServiceTests {
 	
 	@Test
 	public void testRechercherLivreTypeDoc() {
+		
 		LivreService service = new LivreService()
 		List<Livre> livres = service.rechercherLivreTypeDoc(typeDoc1)
 		

@@ -38,11 +38,14 @@ class LivreService {
 	 * @param titre
 	 * @return livres
 	 */
-	def static rechercherLivreTitre(String titre) {
+	def rechercherLivreTitre(String titre) {
 		def livresEnFonctionDuTitre = new ArrayList<Livre>()
-		Livre.findAllByTitre(titre, [max: 5]).each {
+		titre = "%" + titre + "%"
+
+		Livre.findAllByTitreIlike(titre, [max: 5]).each {
 			livresEnFonctionDuTitre.add(it)
 		}
+		
 		return livresEnFonctionDuTitre
 	}
 	
@@ -52,7 +55,7 @@ class LivreService {
 	 * @param nom
 	 * @return
 	 */
-	def static rechercherLivreAuteur(String nom) {
+	def rechercherLivreAuteur(String nom) {
 		
 		def livresEnFonctionAuteur = new ArrayList<Livre>()
 		Auteur auteur = Auteur.findByNom(nom)
