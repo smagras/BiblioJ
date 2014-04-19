@@ -1,0 +1,93 @@
+#menu 
+{
+	z-index: 1;
+	background:#000000;
+	margin: 0px;
+	padding:0px;
+	position:fixed;
+	right: 0px;
+	left:0px;
+	top:0px;
+	box-shadow: 0 0 20px #000000;
+  	-moz-box-shadow: 0 0 20px #000000;  
+  	-webkit-box-shadow: 0 0 20px #000000;
+}
+
+#menu li
+{
+	width:120px;
+	height:40px;
+	display: inline-block;
+	list-style-type:none;
+	text-align:center;
+	
+}
+
+
+
+#menu li:hover
+{
+	background-color:#141414;
+	box-shadow: 0 0 8px #979797;
+  	-moz-box-shadow: 0 0 8px #979797;  
+  	-webkit-box-shadow: 0 0 8px #979797;
+	
+}
+
+#menu li a
+{	
+	text-decoration:none;
+	color:#FFFFFF;
+	vertical-align: middle;
+}
+
+#menu li ul
+{
+	margin:5px;
+	padding:5px;
+	display:none;
+}
+
+#menu li:hover ul
+{
+	text-decoration:none;
+	background-color:rgba(40,40,40,0.7);
+	display:block;
+	width:200px;
+	position:absolute;
+
+	margin: 20px 0px 0px 0px;
+}
+
+#menu li:hover ul:hover
+{
+	display:block;
+	
+}
+
+#menu li:hover ul li
+{
+	width:200px;
+	text-decoration:none;
+	text-align:center;
+	padding-top:10px;
+	margin:0px;
+}
+
+#menu li:hover ul:hover li:hover
+{
+	background-color:rgba(255,255,255,0.2);
+	font-size:15px;
+}
+
+.flagIM
+{
+	width:50;
+	height:25;
+}
+
+.flag
+{
+	width:50;
+	height:25;
+}

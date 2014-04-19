@@ -14,6 +14,11 @@ class LivreController {
         params.max = Math.min(max ?: 10, 100)
         [livreInstanceList: Livre.list(params), livreInstanceTotal: Livre.count()]
     }
+	
+	def rechercher(){
+		
+	}
+	
 
     def create() {
         [livreInstance: new Livre(params)]

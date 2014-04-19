@@ -1,3 +1,4 @@
+
 import pjbiblioj.Auteur
 import pjbiblioj.Livre
 import pjbiblioj.Panier
@@ -59,3 +60,4 @@ class BootStrap {
     def destroy = {
     }
 }
+
