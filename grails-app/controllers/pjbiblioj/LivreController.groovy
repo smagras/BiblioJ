@@ -18,14 +18,26 @@ class LivreController {
 	
 	def rechercher() {
 		LivreService servicePourLivre = new LivreService()
+		String typeDocLivre = request.queryString
 		
-		String typeDocLivre = request.getParameter("typeDoc")
-		TypeDocument typeDoc = new TypeDocument(intitule:typeDocLivre)
-		
-		def listeDesLivres = servicePourLivre.rechercherLivreTypeDoc(typeDoc)
-		
-		println listeDesLivres
-		request.setAttribute("livres", listeDesLivres)
+		if (typeDocLivre != null) {
+			typeDocLivre = typeDocLivre.substring(8)
+			String[] str = typeDocLivre.split("\\+")
+			typeDocLivre = ""
+			
+			for (int i=0; i<str.length; i++) { 
+				typeDocLivre += str[i] + " "
+			}
+			
+			typeDocLivre = typeDocLivre.trim()
+			//println typeDocLivre
+			TypeDocument typeDoc = new TypeDocument(intitule:typeDocLivre)
+			
+			def listeDesLivres = servicePourLivre.rechercherLivreTypeDoc(typeDoc)
+			
+			//println listeDesLivres
+			request.setAttribute("livres", listeDesLivres)
+		}
 	}
 	
 
