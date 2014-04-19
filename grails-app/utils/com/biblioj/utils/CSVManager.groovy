@@ -3,6 +3,7 @@ package com.biblioj.utils
 
 import pjbiblioj.Auteur;
 import pjbiblioj.Livre;
+import pjbiblioj.TypeDocument;
 
 class CSVManager {
 	private File fichierCSV;
@@ -53,6 +54,8 @@ class CSVManager {
 				
 				Livre livre = new Livre(nombreExemplaires:7,nombreExemplairesDisponibles:7);
 				livre.setTitre(row[3])
+				
+				livre.setTypeDoc(new TypeDocument(intitule:row[1]))
 				
 				
 				Auteur auteurDuLivre = convertCaseCSVenAuteur(row[4])
