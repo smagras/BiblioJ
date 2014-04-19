@@ -14,6 +14,7 @@ class UtilisateurService {
 	/**
 	 * Permet de ce connecter au site
 	 * @param pseudo
+	 * @param mySession session en cour
 	 * @param motDePasse
 	 * @return
 	 */
@@ -31,7 +32,7 @@ class UtilisateurService {
 			utilisateurs.each {
 				utilisateurSelectionner = it
 			}
-			mySession.user = utilisateurSelectionner.getNom()
+			mySession.user = utilisateurSelectionner
 			return true
 		}
 		
@@ -39,7 +40,27 @@ class UtilisateurService {
 		
 	}
 	
+	
+	
+	/**
+	 * permet de decconecter la session
+	 * @param mySession session en cour
+	 * @return
+	 */
 	def deconnecter(HttpSession mySession){
+
+		mySession.invalidate();
+	}
+	
+	
+	/**
+	 * Permet d'obtenir l'utilisateur connecter
+	 * @param mySession
+	 * @return
+	 */
+	def getUtilisateurConnecter(HttpSession mySession){
 		
+		Utilisateur utilisateur = mySession["user"]
+		return utilisateur
 	}
 }
