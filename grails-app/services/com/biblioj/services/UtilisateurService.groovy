@@ -25,29 +25,21 @@ class UtilisateurService {
 			eq("motDePasse",motDePasse)
 		}
 		
-		println utilisateurs.nom
 		
 		if (!utilisateurs.isEmpty()){
 			def utilisateurSelectionner
 			utilisateurs.each {
 				utilisateurSelectionner = it
 			}
-			println utilisateurSelectionner.getNom()
-			
-			//def utilisateurSession = [name: utilisateurSelectionner.getNom()]
-			
-			GrailsWebRequest webUtils = WebUtils.retrieveGrailsWebRequest()
-			/*def request = webUtils.getCurrentRequest()
-			def response = webUtils.getCurrentResponse()*/
-			//def mySession = webUtils.getSession()
 			mySession.user = utilisateurSelectionner.getNom()
-			/*mySession.getServletContext().add
-
-			mySession["user"] = utilisateurSelectionner.getNom()*/
-			//session["client"] = utilisateurSelectionner
-			//def fooAttr = session["foo"]
+			return true
 		}
 		
-		return utilisateurs
+		return false
+		
+	}
+	
+	def deconnecter(HttpSession mySession){
+		
 	}
 }

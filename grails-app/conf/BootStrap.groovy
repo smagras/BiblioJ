@@ -63,8 +63,7 @@ class BootStrap {
 		Utilisateur steve = new Utilisateur(nom:"steve",identifiant:"mgs",motDePasse:"pass",panier:p)
 		steve.save(flush: true)
 		
-	/*	UtilisateurService utilisateurService = new UtilisateurService()
-		utilisateurService.connecter("mgs", "pass",session)*/
+
 		
     }
     def destroy = {
