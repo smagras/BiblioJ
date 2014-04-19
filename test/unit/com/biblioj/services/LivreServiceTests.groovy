@@ -59,7 +59,6 @@ class LivreServiceTests {
 	
 	@Test
 	public void testRechercherLivreTypeDoc() {
-		
 		LivreService service = new LivreService()
 		List<Livre> livres = service.rechercherLivreTypeDoc(typeDoc1)
 		
