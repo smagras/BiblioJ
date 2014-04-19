@@ -39,7 +39,7 @@
 					
 					<input type='submit' value='rerchercher typeDoc'  width=250 class='coolButton' />
 					<%
-						List<Livre> listeLivres = request.getParameter("livres");
+						List<Livre> listeLivres = params.get("livres")
 						
 						if (listeLivres != null) out.print(listeLivres)
 						else out.print("<p>listeLivres null </p>")
