@@ -1,12 +1,11 @@
 <%@ page import="pjbiblioj.Livre" %>
-<%@ page contentType="text/html; charset=UTF-8"%>
-<%@ page pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
+
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type"
-	content="application/xhtml+xml; charset=UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <meta name="layout" content="struct">
 
 </head>
@@ -32,9 +31,17 @@
 					
 					Type de Document <br/> <br/>
 					<select class="textbox" onchange='this.form.submit()' onMouseOver="hide()" style='width:300px;height:40px;' name="typeDoc">
-						<option id='titre' value=''> </option>
-						<option id='Nouveauté' value='Nouveauté'> Nouveauté </option>
-						<option id='Livre ado' value='Livre ado'> Livre ado </option>
+						<option id='Titre' value=''>Type de document</option>
+						
+						<%  
+							def typesDeDocuments = params["typesDeDocuments"]
+							String typeDocChoose = params["typeDoc"]
+							typesDeDocuments.each{
+								if (typeDocChoose && it.getIntitule() == typeDocChoose  ) out.print("<option selected id='" + it.getIntitule() +"' value='" + it.getIntitule() +"'> " + it.getIntitule() +" </option>")
+								else out.print("<option id='" + it.getIntitule() +"' value='" + it.getIntitule() +"'> " + it.getIntitule() +" </option>")
+							}
+						%>
+
 					</select>
 					
 					<br/> <br/>
