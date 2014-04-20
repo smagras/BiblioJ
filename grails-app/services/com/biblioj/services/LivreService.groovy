@@ -49,22 +49,6 @@ class LivreService {
 				}
 			}
 			
-			
-			
-			
-			
-		/*	premiereListe.each { livreP ->
-				println "sdsfsdf"
-				boolean youCanAdd = true
-				listeDeListeValide.each { livreAutre ->
-					if (!livreAutre.contains(livreP) ) youCanAdd = false
-				}
-				
-				if (youCanAdd){
-					livresTrier.add(livreP)
-				}
-			}
-*/
 		}
 		
 		return livresTrier
@@ -138,21 +122,20 @@ class LivreService {
 		
 		if (nom != ""){
 		
-			Auteur auteur = Auteur.findByNom(nom)
+			Auteur auteur = Auteur.findByNomIlike("%"+nom+"%")
 			
-			/*Auteur auteur = Auteur.withCriteria {
-		
-				eq 'prenom', nom
+			if (auteur){
+
+				println auteur.getNom() + " " + auteur.getPrenom()
 				
-			}*/
-			println auteur
+				int tailleListe = auteur.livres.size()
+				if (tailleListe > 5) tailleListe = 5
+				
+				for (int i=0; i<tailleListe; i++) {
+					Livre livre = auteur.livres.toList().get(i)
+					livresEnFonctionAuteur.add(livre)
+				}
 			
-			int tailleListe = auteur.livres.size()
-			if (tailleListe > 5) tailleListe = 5
-			
-			for (int i=0; i<tailleListe; i++) {
-				Livre livre = auteur.livres.toList().get(i)
-				livresEnFonctionAuteur.add(livre)
 			}
 		}
 		

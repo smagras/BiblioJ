@@ -39,15 +39,20 @@ class BootStrap {
 		List<Livre> listLivres = csvMan.getLivres()
 		
 		listLivres.each {
+		
 			it.save(flush: true)
+			 
 		}
 		
 		LivreService service = new LivreService()
-		/*def livreR = service.rechercherLivres(new TypeDocument(intitule:"Livre ado"), "", "Collins")
-		println livreR.titre*/
+		def livreR = service.rechercherLivres(new TypeDocument(intitule:"Livre adulte"), "Barbe", "")
+		println livreR.titre
+	
+	/*	def livreRE = service.rechercherLivreAuteur( "Ducr" )
+		println livreRE.titre*/
 		
-		def livreRE = service.rechercherLivreAuteur( "Collins" )
-		println livreRE.titre
+		def livreRE = service.rechercherLivreTypeDoc(new TypeDocument(intitule:"Livre adulte"))
+		 println livreRE.titre
     }
     def destroy = {
     }
