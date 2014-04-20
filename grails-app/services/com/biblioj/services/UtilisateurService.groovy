@@ -7,10 +7,36 @@ import org.codehaus.groovy.grails.web.servlet.mvc.GrailsWebRequest
 import org.codehaus.groovy.grails.web.util.WebUtils
 import org.springframework.web.context.request.RequestContextHolder
 
+import pjbiblioj.Panier
 import pjbiblioj.Utilisateur
 
 class UtilisateurService {
 
+	
+	def inscrire(String pidentifiant,String pmotDePasse,String pnom){
+		
+		def utilisateurs = Utilisateur.findAll([max: 1]){
+			eq("identifiant",pidentifiant)
+			eq("motDePasse",pmotDePasse)
+		}
+		
+		if (utilisateurs.isEmpty()){
+			
+			Panier p = new Panier(nom:pnom)
+			p.save(flush: true)
+			
+			Utilisateur nouvelUtilisateur = new Utilisateur(nom:pnom,identifiant:pidentifiant,motDePasse:pmotDePasse,panier:p)
+			nouvelUtilisateur.save(flush: true)
+			
+			return true
+			
+		}else
+		{
+			return false
+		}
+		
+		
+	}
 	/**
 	 * Permet de ce connecter au site
 	 * @param pseudo

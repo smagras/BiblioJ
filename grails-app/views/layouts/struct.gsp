@@ -95,9 +95,13 @@
 						htmlCode += "<input class='textbox' type='text' value='' style='width:200px' name='id' /><br/>"
 						htmlCode += "Mot de passe<br/>"
 						htmlCode += "<input class='textbox' type='password'  style='width:200px' name='password' /><br/><br/>"
+						htmlCode += "<a href='../utilisateur/inscription' >Inscrivez vous</a></br></br>"
 						htmlCode += "<input type='submit' value='Connexion'  width=250 class='coolButton' />"
+						
 						htmlCode += "</div>"		
 					}
+					
+					
 					
 					
 					out.print(htmlCode)

@@ -8,6 +8,14 @@ import pjbiblioj.TypeDocument;
  * Permet d'avoir les services concernants les livres
  */
 class LivreService {
+	
+	/**
+	 * Permet d'obtenir tout les types de documents
+	 * @return
+	 */
+	def getToutLesTypeDeDocuments(){
+		return TypeDocument.findAll ()
+	}
 
 	/**
 	 * Permet de retourner les livres en fonction du type de document
