@@ -28,11 +28,11 @@
 				<h3>Trouver un livre</h3>
 				<p>
 				
-					Recherche par : <br/> <br/> <br/>
+					Rechercher par : <br/> <br/> <br/>
 					
 					Type de Document <br/> <br/>
-					<select class="textbox" onchange='this.form.submit()' onMouseOver="hide()" style='width:300px;height:40px;' name="typeDoc">
-						<option id='titre' value=''> </option>
+					<select class="textbox" onMouseOver="hide()" style='width:300px;height:40px;' name="typeDoc">
+						<option id='titre'> </option>
 						<option id='Nouveauté' value='Nouveauté'> Nouveauté </option>
 						<option id='Livre ado' value='Livre ado'> Livre ado </option>
 					</select>
@@ -49,35 +49,17 @@
 					
 					<br/> <br/>
 					<input type='submit' value='rerchercher' width=250 class='coolButton' />
-					<br/> <br/>
+					<br/> <br/> <br/> <br/>
 					
-					Résultats de la recherche par type de document : <br/>
+					Résultats de la recherche : <br/> <br/>
 					<%
-						List<Livre> typeDocLivres = typeDoc
+						List<Livre> listeLivres = livres
 						
-						/*if (listeLivres != null) out.print("<p>" + listeLivres + "</p>")
-						else out.print("<p>listeLivres null </p>")*/
-						
-						for (Livre l : typeDocLivres) {
+						int i=0;
+						while (i<5 && i<listeLivres.size()) {
+							Livre l = listeLivres.get(i);
 							out.print("<p>"+ l.titre + " " + l.nombreExemplairesDisponibles + "</p>");
-						}
-					%>
-					 
-					Résultats de la recherche par titre : <br/>
-					<%
-						List<Livre> titreLivres = titre
-						
-						for (Livre l : titreLivres) {
-							out.print("<p>"+ l.titre + " " + l.nombreExemplairesDisponibles + "</p>");
-						}
-					%>
-					
-					Résultats de la recherche par auteurs : <br/>
-					<%
-						List<Livre> auteurLivres = auteurs
-						
-						for (Livre l : auteurLivres) {
-							out.print("<p>"+ l.titre + " " + l.nombreExemplairesDisponibles + "</p>");
+							i++;
 						}
 					%>
 				</p>

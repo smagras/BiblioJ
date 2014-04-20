@@ -9,48 +9,6 @@ import pjbiblioj.TypeDocument;
  */
 class LivreService {
 	
-	/*def rechercherLivres(TypeDocument typeDoc, String titre, String auteur) {
-		
-		def livresTrier = new ArrayList<Livre>()
-		
-		println "qsdddddddd"
-		def listeEnFonctionDesDocuments = rechercherLivreTypeDoc(typeDoc)
-		def listeEnFonctionDesTitre = rechercherLivreTitre(titre)
-		def listeEnFonctionDesAuteur = rechercherLivreAuteur(auteur)
-		
-		println "okkkkkkkkkk"
-		
-		def listeDeListeValide = new ArrayList<List>()
-		if (typeDoc != null) listeDeListeValide.add(listeEnFonctionDesDocuments)
-		if (titre != "") listeDeListeValide.add(listeEnFonctionDesTitre)
-		if (auteur != "") listeDeListeValide.add(listeEnFonctionDesAuteur)
-		
-		
-		if (!listeDeListeValide.isEmpty()) {
-			
-			def premiereListe = listeDeListeValide.get(0)
-			listeDeListeValide.remove(0)
-			println "rrrrrrrrr " + premiereListe.size()
-			
-			for (Livre livreP: premiereListe){
-				boolean youCanAdd = true
-				print livreP.getTitre() + " = "
-				
-				for (ArrayList<Livre> livreAutre: listeDeListeValide){
-					if (!livreAutre.contains(livreP) ) youCanAdd = false
-					
-					print livreAutre.titre
-				}
-				
-				if (youCanAdd){
-					livresTrier.add(livreP)
-				}
-			}
-		}
-		
-		return livresTrier
-	}*/
-	
 	def rechercherLivres(TypeDocument typeDoc, String titre, String auteur) {
 		def livresTries = new ArrayList<Livre>()
 		
@@ -59,30 +17,33 @@ class LivreService {
 		def listeEnFonctionDesAuteurs = rechercherLivreAuteur(auteur)
 		
 		def listeDeListeValide = new ArrayList<List>()
-		if (typeDoc != null) listeDeListeValide.add(listeEnFonctionDesDocuments)
+		if (!typeDoc.isEmpty()) listeDeListeValide.add(listeEnFonctionDesDocuments)
 		if (titre != "") listeDeListeValide.add(listeEnFonctionDuTitre)
 		if (auteur != "") listeDeListeValide.add(listeEnFonctionDesAuteurs)
 		
-		if (!listeDeListeValide.isEmpty()) {
+		
+		if (listeDeListeValide.size() == 1) {
+			listeDeListeValide.get(0)
+		}
+		
+		else if (!listeDeListeValide.isEmpty()) {
 			
 			def premiereListe = listeDeListeValide.get(0)
 			listeDeListeValide.remove(0)
 			
 			for (Livre livre : premiereListe) {
-				//boolean estCommun = true
+				boolean estCommun = true
 				
 				for (ArrayList<Livre> livreAutre : listeDeListeValide) {
-					if (livreAutre == livre)
-						livresTries.add(livre)
-						//estCommun = false
-					
-					//print livreAutre.titre
+					if (!livreAutre.contains(livre))
+						estCommun = false
 				}
 				
-				/*if (estCommun) {
-					livresTrier.add(livreP)
-				}*/
+				if (estCommun)
+					livresTries.add(livre)
 			}
+			
+			livresTries
 		}
 	}
 	
@@ -95,7 +56,7 @@ class LivreService {
 	def rechercherLivreTypeDoc(TypeDocument typeDoc) {
 		def livresEnFonctionDuTypeDeDoc = new ArrayList<Livre>()
 		
-		if (typeDoc != null){
+		if (typeDoc != null) {
 		
 			def listeTypeDocEquivalant = TypeDocument.findAll {
 				ilike("intitule", typeDoc.getIntitule())

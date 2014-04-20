@@ -44,7 +44,7 @@ class BootStrap {
 		
 		LivreService service = new LivreService()
 		def livreR = service.rechercherLivres(new TypeDocument(intitule:"Livre adulte"), "Barbe", "")
-		//println livreR.titre
+		println livreR.titre
 	
 	/*	def livreRE = service.rechercherLivreAuteur( "Ducr" )
 		println livreRE.titre*/

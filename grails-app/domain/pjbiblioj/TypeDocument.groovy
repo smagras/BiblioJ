@@ -6,5 +6,11 @@ class TypeDocument {
 	static belongsTo = Livre
 	
 	static constraints = {
+		intitule blank: false, nullable: false
     }
+	
+	
+	def isEmpty() {
+		intitule == ""
+	}
 }
