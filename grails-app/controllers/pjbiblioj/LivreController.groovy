@@ -54,7 +54,7 @@ class LivreController {
 			
 			listeDesLivres = servicePourLivre.rechercherLivreTypeDoc(typeDoc)
 			println listeDesLivres
-			[typeDoc: listeDesLivres]
+			//[typeDoc: listeDesLivres]
 			
 			//redirect(url: url)//"/PJBiblioJ/grails/livre/rechercher?typeDoc=Nouveauté")
 		}
@@ -62,14 +62,15 @@ class LivreController {
 		
 		if (titreLivre != null) {
 			listeDesLivres = servicePourLivre.rechercherLivreTitre(titreLivre)
-			[titre: listeDesLivres]
+			//[titre: listeDesLivres]
 		}
 		
 		if (auteurs != null) {
 			listeDesLivres = servicePourLivre.rechercherLivreAuteur(auteurs)
-			[auteurs: listeDesLivres]
+			//[auteurs: listeDesLivres]
 		}
 		
+		[typeDoc: listeDesLivres, titre: listeDesLivres, auteurs: listeDesLivres]
 	}
 	
 
