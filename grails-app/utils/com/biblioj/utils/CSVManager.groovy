@@ -11,11 +11,8 @@ class CSVManager {
 	
 	CSVManager(){
 		
-		//fichierCSV = grailsApplication.mainContext.getResource("csv/Les 1000 titres les plus recherches en 2012.csv").file
-		
 		fichierCSV = new File("resources/Les 1000 titres les plus recherches en 2012.csv")
 		
-		//fichierCSV = grailsApplication.mainContext.getResource("csv/Les 1000 titres les plus recherches en 2012.csv").file
 	}
 	
 	
@@ -48,6 +45,8 @@ class CSVManager {
 		
 		def listeDeFichier = new ArrayList<Livre>();
 		
+		HashMap<String,TypeDocument> uniqueTypeDocument = new HashMap<String,TypeDocument>()
+		
 		if (fichierCSV.exists()) {
 			
 			fichierCSV.splitEachLine(';') { row ->	
@@ -55,7 +54,12 @@ class CSVManager {
 				Livre livre = new Livre(nombreExemplaires:7,nombreExemplairesDisponibles:7);
 				livre.setTitre(row[3])
 				
-				livre.setTypeDoc(new TypeDocument(intitule:row[1]))
+				if (!uniqueTypeDocument.get(row[1])){
+					uniqueTypeDocument.put(row[1], new TypeDocument(intitule:row[1]))
+				}
+				
+				
+				livre.setTypeDoc( uniqueTypeDocument.get(row[1]) )
 				
 				
 				Auteur auteurDuLivre = convertCaseCSVenAuteur(row[4])
@@ -63,7 +67,8 @@ class CSVManager {
 					//println auteurDuLivre.getNom() + "" + auteurDuLivre.getPrenom()
 					livre.getAuteurs().add(auteurDuLivre);
 				}
-				
+				   
+				   
 				listeDeFichier.add(livre);
 			 }
 			

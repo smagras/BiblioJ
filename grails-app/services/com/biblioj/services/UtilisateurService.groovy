@@ -49,7 +49,7 @@ class UtilisateurService {
 	 */
 	def deconnecter(HttpSession mySession){
 
-		mySession.invalidate();
+		mySession.user = null
 	}
 	
 	
