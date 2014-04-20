@@ -115,14 +115,15 @@
 							
 							htmlCode += "<h4>Mon Panier</h4>"
 							
-							Utilisateur moi = Utilisateur.findByIdentifiant(utilisateurConnecter.getIdentifiant())
-							
-							Panier monPanier = moi.getPanier()
+							Panier monPanier = utilisateurConnecter.getPanier()
 							HashSet<Livre> mesLivres = monPanier.getLivres()
 							mesLivres.each{
-								htmlCode += "<img src='${resource(dir: 'images', file: 'icone_oeil.gif')}' style='width:20px;height:15px'  /> "
-								htmlCode += "<img src='${resource(dir: 'images', file: 'IC113990.gif')}' style='width:15px;height:15px'  /> "
-								 
+								htmlCode += "<a href='../panier/afficher?see="+it.getTitre()+"'>"
+								htmlCode += "<img src='${resource(dir: 'images', file: 'icone_oeil.gif')}' style='width:20px;height:15px'  />"
+								htmlCode += "</a> "
+								htmlCode += "<a href='../panier/afficher?delete="+it.getTitre()+"'>"
+								htmlCode += "<img src='${resource(dir: 'images', file: 'IC113990.gif')}' style='width:15px;height:15px'  />"
+								htmlCode += "</a> "
 								htmlCode += it.getTitre() + "</br>"
 		
 								
