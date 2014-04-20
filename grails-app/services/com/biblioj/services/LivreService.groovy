@@ -9,7 +9,7 @@ import pjbiblioj.TypeDocument;
  */
 class LivreService {
 	
-	def rechercherLivres(TypeDocument typeDoc,String titre,String auteur){
+	/*def rechercherLivres(TypeDocument typeDoc, String titre, String auteur) {
 		
 		def livresTrier = new ArrayList<Livre>()
 		
@@ -25,10 +25,8 @@ class LivreService {
 		if (titre != "") listeDeListeValide.add(listeEnFonctionDesTitre)
 		if (auteur != "") listeDeListeValide.add(listeEnFonctionDesAuteur)
 		
-
 		
-		
-		if (!listeDeListeValide.isEmpty()){
+		if (!listeDeListeValide.isEmpty()) {
 			
 			def premiereListe = listeDeListeValide.get(0)
 			listeDeListeValide.remove(0)
@@ -48,19 +46,46 @@ class LivreService {
 					livresTrier.add(livreP)
 				}
 			}
-			
 		}
 		
 		return livresTrier
+	}*/
+	
+	def rechercherLivres(TypeDocument typeDoc, String titre, String auteur) {
+		def livresTries = new ArrayList<Livre>()
+		
+		def listeEnFonctionDesDocuments = rechercherLivreTypeDoc(typeDoc)
+		def listeEnFonctionDuTitre = rechercherLivreTitre(titre)
+		def listeEnFonctionDesAuteurs = rechercherLivreAuteur(auteur)
+		
+		def listeDeListeValide = new ArrayList<List>()
+		if (typeDoc != null) listeDeListeValide.add(listeEnFonctionDesDocuments)
+		if (titre != "") listeDeListeValide.add(listeEnFonctionDuTitre)
+		if (auteur != "") listeDeListeValide.add(listeEnFonctionDesAuteurs)
+		
+		if (!listeDeListeValide.isEmpty()) {
+			
+			def premiereListe = listeDeListeValide.get(0)
+			listeDeListeValide.remove(0)
+			
+			for (Livre livre : premiereListe) {
+				//boolean estCommun = true
+				
+				for (ArrayList<Livre> livreAutre : listeDeListeValide) {
+					if (livreAutre == livre)
+						livresTries.add(livre)
+						//estCommun = false
+					
+					//print livreAutre.titre
+				}
+				
+				/*if (estCommun) {
+					livresTrier.add(livreP)
+				}*/
+			}
+		}
 	}
 	
-	/**
-	 * Permet d'obtenir tout les type
-	 * @return
-	 */
-	def getToutLesTypeDeDocuments(){
-		return TypeDocument.findAll ()
-	}
 
 	/**
 	 * Permet de retourner les livres en fonction du type de document
@@ -68,8 +93,6 @@ class LivreService {
 	 * @return livres
 	 */
 	def rechercherLivreTypeDoc(TypeDocument typeDoc) {
-		
-		
 		def livresEnFonctionDuTypeDeDoc = new ArrayList<Livre>()
 		
 		if (typeDoc != null){
@@ -81,7 +104,7 @@ class LivreService {
 			if (!listeTypeDocEquivalant.isEmpty()) {
 				def typeDansLaBDEquivalant = listeTypeDocEquivalant.get(0)
 		
-				Livre.findAllByTypeDoc(typeDansLaBDEquivalant, [max: 5]).each {
+				Livre.findAllByTypeDoc(typeDansLaBDEquivalant).each {
 					livresEnFonctionDuTypeDeDoc.add(it)
 				}
 			}
@@ -99,10 +122,9 @@ class LivreService {
 	def rechercherLivreTitre(String titre) {
 		def livresEnFonctionDuTitre = new ArrayList<Livre>()
 		
-		if (titre != ""){
-			titre = "%" + titre + "%"
-	
-			Livre.findAllByTitreIlike(titre, [max: 5]).each {
+		if (titre != "") {
+			
+			Livre.findAllByTitreIlike("%"+titre+"%").each {
 				livresEnFonctionDuTitre.add(it)
 			}
 		}
@@ -117,29 +139,20 @@ class LivreService {
 	 * @return
 	 */
 	def rechercherLivreAuteur(String nom) {
-		
 		def livresEnFonctionAuteur = new ArrayList<Livre>()
 		
-		if (nom != ""){
-		
+		if (nom != "") {
 			Auteur auteur = Auteur.findByNomIlike("%"+nom+"%")
 			
-			if (auteur){
-
+			if (auteur) {
 				println auteur.getNom() + " " + auteur.getPrenom()
 				
-				int tailleListe = auteur.livres.size()
-				if (tailleListe > 5) tailleListe = 5
-				
-				for (int i=0; i<tailleListe; i++) {
-					Livre livre = auteur.livres.toList().get(i)
-					livresEnFonctionAuteur.add(livre)
+				auteur.livres.each {
+					livresEnFonctionAuteur.add(it)
 				}
-			
 			}
 		}
 		
 		return livresEnFonctionAuteur
-		
 	}
 }
