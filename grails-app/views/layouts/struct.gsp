@@ -1,3 +1,5 @@
+<%@ page import="pjbiblioj.Utilisateur" %>
+<%@ page import="com.biblioj.services.UtilisateurService" %>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
 <!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
@@ -53,7 +55,21 @@
 
 			<div class="socialBox">
 
-				<h2>Compte</h2>
+				<h2><% 
+				UtilisateurService utilisateurService = new UtilisateurService()
+				Utilisateur utilisateurConnecter =  utilisateurService.getUtilisateurConnecter(session)
+				
+				if (utilisateurConnecter){
+					
+					out.print(utilisateurConnecter.getIdentifiant())
+					
+				}
+				else{
+					out.print("Compte")
+				}
+					
+				 %>
+				 </h2>
 
 				<p style="text-align: center;">
 					<img src="${resource(dir: 'images', file: 'avatar_icon.jpg')}"
@@ -64,14 +80,28 @@
 				
 				
 				<form action="../utilisateur/connexion" method="get">
-				
-					<div style="text-align: center;">
-						Identifiant<br/>
-						<input class="textbox" type="text" value="" style="width:200px" name="id" /><br/>
-						Mot de passe<br/>
-						<input class="textbox" type="password""  style="width:200px" name="password" /><br/><br/>
-						<input type='submit' value='Connexion' onclick='url()' width=250 class='coolButton' />
-					</div>
+					<% 
+					String htmlCode =""
+					
+					if (utilisateurConnecter){
+						htmlCode += "<div style='text-align: center;'>"
+						htmlCode += "<strong>Nom : </strong>" + utilisateurConnecter.getNom() +"<br/>"
+						htmlCode += "<br/><input type='submit' value='Deconnexion' width=250 class='coolButton' />"
+						htmlCode += "</div>"
+					}
+					else{
+						htmlCode += "<div style='text-align: center;'>"
+						htmlCode += "Identifiant<br/>"
+						htmlCode += "<input class='textbox' type='text' value='' style='width:200px' name='id' /><br/>"
+						htmlCode += "Mot de passe<br/>"
+						htmlCode += "<input class='textbox' type='password'  style='width:200px' name='password' /><br/><br/>"
+						htmlCode += "<input type='submit' value='Connexion'  width=250 class='coolButton' />"
+						htmlCode += "</div>"		
+					}
+					
+					
+					out.print(htmlCode)
+					%>
 				
 				</form>
 

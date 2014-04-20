@@ -12,31 +12,47 @@ class UtilisateurController {
     }
 	
 	
-	def connexion(){
-		println "looooooool"
+def connexion(){
+
 		UtilisateurService utilisateurService = new UtilisateurService()
-		//utilisateurService.deconnecter(session)
+
 	
 		def ident = params["id"]
 		def password  = params["password"]
 		
-		println ident + " " + password
 		
-		def connected = utilisateurService.connecter(ident, password,session)
 		
-		if (connected){
+		
+		Utilisateur utilisateur = utilisateurService.getUtilisateurConnecter(session)
+		
+		if (!utilisateur){
 			
-			Utilisateur u = utilisateurService.getUtilisateurConnecter(session)
-			 
-			println "ggg " + u.getNom()
-			println "ggg " + u.getIdentifiant()
-			println "ggg " + u.getMotDePasse()
+			def succesConnection = utilisateurService.connecter(ident, password,session)
+			
+			if (succesConnection){
+				
+				if ( request.getHeader('referer').contains("connexion") ){
+					 redirect(uri: "/../PJBiblioJ/livre/rechercher" )
+				}
+				else{
+					redirect(uri: request.getHeader('referer') )
+				}
+			}
+			
 		
+		}
+		else{
+			
+			utilisateurService.deconnecter(session)
+			
+			
+			redirect(uri: request.getHeader('referer') )
+			
 		}
 		 
 	
 		
-		//redirect(uri: request.getHeader('referer') )
+		
 	}
 
     def list(Integer max) {
