@@ -24,20 +24,18 @@
 			<form name="input" action="" method="get">
 				<h3>Trouver un livre</h3>
 				<p>
-					<input class="textbox" type="text" value="<%
-					String typeDoc = request.getParameter("typeDoc");
+				
+					Recherche par : <br/> <br/> <br/>
 					
-					if (typeDoc != null){
-						out.print(typeDoc);
-					}
-					%>" name="typeDoc" />
-					
-					
-					
-					
-					<input type='submit' value='rerchercher typeDoc' onclick='url()' width=250 class='coolButton' />
+					<select class="textbox" onchange='this.form.submit()' onMouseOver="hide()" style='width:300px;height:40px;' name="typeDoc">
+						<option id='titre'> Type de Document </option> 
+						<option id='Nouveauté' value='Nouveauté'> Nouveauté </option>
+						<option id='Livre ado' value='Livre ado'> Livre ado </option>
+					</select>
 					
 					
+					
+					<input type='submit' value='rerchercher' width=250 class='coolButton' />
 					<%
 						List<Livre> listeLivres = livres
 						
@@ -63,22 +61,24 @@
 			</form>
 		</div>
 
+				<div style="text-align: center;"></div>
+
+
+			</div>
+
+
+		</div>
 
 
 
 	</div>
-	<!-- /SocialBox -->
-
+	
 	<script type="text/javascript">
-		function url() {
-			var uri = document.location.href;
-			var dec = decodeURI(uri);
-
-			//alert(uri + '\n' + dec);
-			document.location.href = dec;
+		function hide()
+		{
+			document.getElementById('titre').style.display = 'none';
 		}
 	</script>
-
 
 </body>
 
