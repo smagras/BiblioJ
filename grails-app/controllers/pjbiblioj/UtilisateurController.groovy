@@ -1,6 +1,7 @@
 package pjbiblioj
 
 import com.biblioj.services.UtilisateurService
+
 import org.springframework.dao.DataIntegrityViolationException
 
 class UtilisateurController {
@@ -11,8 +12,37 @@ class UtilisateurController {
         redirect(action: "list", params: params)
     }
 	
+	def inscription(){
+		
+		UtilisateurService utilisateurService = new UtilisateurService()
+		utilisateurService.deconnecter(session)
+		
+		def ident = params["id"]
+		def password  = params["password"]
+		def nom  = params["nom"]
+		
+		if (ident && password && nom){
+			
+			def estInscrit = utilisateurService.inscrire(ident,password,nom)
+			
+			if (!estInscrit){
+				params.erreur = "Impossible de crée ce compte car il existe déja."
+			}
+			else
+			{
+				redirect(uri: "/../PJBiblioJ/utilisateur/connexion?id="+ident+"&password="+password )
+			}
+			
+			
+		}
+		else{
+			params.erreur = "Il y a des champs non remplie."
+		}
+		
+	}
 	
-def connexion(){
+	
+	def connexion(){
 
 		UtilisateurService utilisateurService = new UtilisateurService()
 
@@ -33,6 +63,9 @@ def connexion(){
 				
 				if ( request.getHeader('referer').contains("connexion") ){
 					 redirect(uri: "/../PJBiblioJ/livre/rechercher" )
+				}
+				else if ( request.getHeader('referer').contains("inscription") ){
+					redirect(uri: "/../PJBiblioJ/livre/rechercher" )
 				}
 				else{
 					redirect(uri: request.getHeader('referer') )
