@@ -30,16 +30,25 @@ class LivreController {
 		 
 		params.valeurFun = "sdfdsfdsfdfs"*/
 		
-
+		String url = request.getRequestURL().toString()
+		url = url.substring(0, 55)
+		
+		
 		String typeDocLivre = params["typeDoc"]
 		
 		if (typeDocLivre != null) {
+			
+			url += '?' + request.queryString
+			//url = URLEncoder.encode(url, "UTF-8")
+			url = URLDecoder.decode(url, "UTF-8")
+			println url
 			
 			LivreService servicePourLivre = new LivreService()
 			TypeDocument typeDoc = new TypeDocument(intitule:typeDocLivre)
 			
 			def listeDesLivres = servicePourLivre.rechercherLivreTypeDoc(typeDoc)
 			[livres: listeDesLivres]
+			redirect(uri: url)
 		}
 		
 	}

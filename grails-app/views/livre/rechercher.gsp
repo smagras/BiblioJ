@@ -1,9 +1,12 @@
 <%@ page import="pjbiblioj.Livre" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=UTF-8" />
 <meta name="layout" content="struct">
 
 </head>
