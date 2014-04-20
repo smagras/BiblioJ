@@ -15,19 +15,24 @@ class UtilisateurController {
 	def connexion(){
 		println "looooooool"
 		UtilisateurService utilisateurService = new UtilisateurService()
-		utilisateurService.deconnecter(session)
+		//utilisateurService.deconnecter(session)
 	
 		def ident = params["id"]
 		def password  = params["password"]
 		
 		println ident + " " + password
 		
-	/*	utilisateurService.connecter(ident, password,session)
-		Utilisateur u = utilisateurService.getUtilisateurConnecter(session)
-		 
-		println "ggg " + u.getNom()
-		println "ggg " + u.getIdentifiant()
-		println "ggg " + u.getMotDePasse()*/
+		def connected = utilisateurService.connecter(ident, password,session)
+		
+		if (connected){
+			
+			Utilisateur u = utilisateurService.getUtilisateurConnecter(session)
+			 
+			println "ggg " + u.getNom()
+			println "ggg " + u.getIdentifiant()
+			println "ggg " + u.getMotDePasse()
+		
+		}
 		 
 	
 		
