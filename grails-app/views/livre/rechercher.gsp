@@ -36,14 +36,27 @@
 						<option id='Livre ado' value='Livre ado'> Livre ado </option>
 					</select>
 					
+					<br/> <br/>
 					
+					<select class="textbox" onchange='this.form.submit()' onMouseOver="hide()" style='width:300px;height:40px;' name="titreL">
+						<option id='titre'> Titre </option> 
+						<option id='Titre' value='Titre'> Titre </option>
+					</select>
 					
+					<br/> <br/>
+					
+					<select class="textbox" onchange='this.form.submit()' onMouseOver="hide()" style='width:300px;height:40px;' name="auteurs">
+						<option id='titre'> Auteur </option> 
+						<option id='Auteur' value='Auteur'> Auteur </option>
+					</select>
+					
+					<br/> <br/>
 					<input type='submit' value='rerchercher' width=250 class='coolButton' />
 					<%
 						List<Livre> listeLivres = livres
 						
-						/*if (listeLivres != null) out.print("<p> listeLivres </p>")
-						else out.print("<p>listeLivres null </p>")*/
+						if (listeLivres != null) out.print("<p>" + listeLivres + "</p>")
+						else out.print("<p>listeLivres null </p>")
 						
 						for (Livre l : listeLivres) {
 							out.print("<p>"+ l.titre + " " + l.nombreExemplairesDisponibles + "</p>");

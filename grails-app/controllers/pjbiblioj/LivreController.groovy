@@ -31,8 +31,8 @@ class LivreController {
 		params.valeurFun = "sdfdsfdsfdfs"*/
 		
 		String url = request.getRequestURL().toString()
+		///PJBiblioJ/grails/livre/rechercher.dispatch
 		url = url.substring(0, 55)
-		
 		
 		String typeDocLivre = params["typeDoc"]
 		
@@ -40,6 +40,7 @@ class LivreController {
 			
 			url += '?' + request.queryString
 			//url = URLEncoder.encode(url, "UTF-8")
+			//url = URLDecoder.decode(url, "ISO8859-1")
 			url = URLDecoder.decode(url, "UTF-8")
 			println url
 			
@@ -47,8 +48,10 @@ class LivreController {
 			TypeDocument typeDoc = new TypeDocument(intitule:typeDocLivre)
 			
 			def listeDesLivres = servicePourLivre.rechercherLivreTypeDoc(typeDoc)
+			println listeDesLivres
 			[livres: listeDesLivres]
-			redirect(uri: url)
+			
+			//redirect(url: url)//"/PJBiblioJ/grails/livre/rechercher?typeDoc=Nouveauté")
 		}
 		
 	}
