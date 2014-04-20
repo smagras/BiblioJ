@@ -10,7 +10,7 @@ import pjbiblioj.TypeDocument;
 class LivreService {
 	
 	/**
-	 * Permet d'obtenir tout les types de documents
+	 * Permet d'obtenir tout les type
 	 * @return
 	 */
 	def getToutLesTypeDeDocuments(){
@@ -68,14 +68,12 @@ class LivreService {
 		def livresEnFonctionAuteur = new ArrayList<Livre>()
 		Auteur auteur = Auteur.findByNom(nom)
 		
-		if (auteur != null) {
-			int tailleListe = auteur.livres.size()
-			if (tailleListe > 5) tailleListe = 5
-			
-			for (int i=0; i<tailleListe; i++) {
-				Livre livre = auteur.livres.toList().get(i)
-				livresEnFonctionAuteur.add(livre)
-			}
+		int tailleListe = auteur.livres.size()
+		if (tailleListe > 5) tailleListe = 5
+		
+		for (int i=0; i<tailleListe; i++) {
+			Livre livre = auteur.livres.toList().get(i)
+			livresEnFonctionAuteur.add(livre)
 		}
 		
 		return livresEnFonctionAuteur
