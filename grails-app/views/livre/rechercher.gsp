@@ -35,7 +35,6 @@
 					
 					
 					
-					
 					<input type='submit' value='rerchercher' width=250 class='coolButton' />
 					<%
 						List<Livre> listeLivres = livres
@@ -61,17 +60,6 @@
 
 			</form>
 		</div>
-		<!-- SocialBox -->
-		<div id="social">
-
-			<div class="socialBox">
-
-				<h2>User</h2>
-
-				<p style="text-align: center;">
-					<img src="${resource(dir: 'images', file: 'avatar_icon.jpg')}"
-						width="190" height="210">
-				</p>
 
 				<div style="text-align: center;"></div>
 
@@ -80,6 +68,9 @@
 
 
 		</div>
+
+
+
 	</div>
 	
 	<script type="text/javascript">

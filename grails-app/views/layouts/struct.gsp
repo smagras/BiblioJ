@@ -47,6 +47,42 @@
 	
 	
 		<g:layoutBody/>
+		
+		<!-- SocialBox -->
+		<div id="social">
+
+			<div class="socialBox">
+
+				<h2>Compte</h2>
+
+				<p style="text-align: center;">
+					<img src="${resource(dir: 'images', file: 'avatar_icon.jpg')}"
+						width="130" height="130">
+				</p>
+				
+		
+				
+				
+				<form action="../utilisateur/connexion" method="get">
+				
+					<div style="text-align: center;">
+						Identifiant<br/>
+						<input class="textbox" type="text" value="" style="width:200px" name="id" /><br/>
+						Mot de passe<br/>
+						<input class="textbox" type="password""  style="width:200px" name="password" /><br/><br/>
+						<input type='submit' value='Connexion' onclick='url()' width=250 class='coolButton' />
+					</div>
+				
+				</form>
+
+
+			</div>
+
+
+		</div>
+		
+		
+		
 		<r:layoutResources />
 		
 		
