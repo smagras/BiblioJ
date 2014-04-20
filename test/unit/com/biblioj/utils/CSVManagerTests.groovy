@@ -27,5 +27,6 @@ class CSVManagerTests {
 		HashSet<Auteur> listeAuteurs = premierLivre.getAuteurs()
 
 		assert 1 == listeAuteurs.size() : "Il n'y a pas 1 auteur"	
+		
 	}
 }

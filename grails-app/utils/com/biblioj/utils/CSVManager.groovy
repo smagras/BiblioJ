@@ -54,7 +54,7 @@ class CSVManager {
 				Livre livre = new Livre(nombreExemplaires:7,nombreExemplairesDisponibles:7);
 				livre.setTitre(row[3])
 				
-				if (uniqueTypeDocument.get(row[1])){
+				if (!uniqueTypeDocument.get(row[1])){
 					uniqueTypeDocument.put(row[1], new TypeDocument(intitule:row[1]))
 				}
 				
