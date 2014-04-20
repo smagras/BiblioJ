@@ -30,11 +30,17 @@ class LivreController {
 		 
 		params.valeurFun = "sdfdsfdsfdfs"*/
 		
+		
+		def listeDesLivres
+		LivreService servicePourLivre = new LivreService()
+		
+		
 		String url = request.getRequestURL().toString()
-		///PJBiblioJ/grails/livre/rechercher.dispatch
 		url = url.substring(0, 55)
 		
 		String typeDocLivre = params["typeDoc"]
+		String titreLivre = params["titre"]
+		String auteurs = params["auteurs"]
 		
 		if (typeDocLivre != null) {
 			
@@ -44,14 +50,24 @@ class LivreController {
 			url = URLDecoder.decode(url, "UTF-8")
 			println url
 			
-			LivreService servicePourLivre = new LivreService()
 			TypeDocument typeDoc = new TypeDocument(intitule:typeDocLivre)
 			
-			def listeDesLivres = servicePourLivre.rechercherLivreTypeDoc(typeDoc)
+			listeDesLivres = servicePourLivre.rechercherLivreTypeDoc(typeDoc)
 			println listeDesLivres
-			[livres: listeDesLivres]
+			[typeDoc: listeDesLivres]
 			
 			//redirect(url: url)//"/PJBiblioJ/grails/livre/rechercher?typeDoc=Nouveauté")
+		}
+		
+		
+		if (titreLivre != null) {
+			listeDesLivres = servicePourLivre.rechercherLivreTitre(titreLivre)
+			[titre: listeDesLivres]
+		}
+		
+		if (auteurs != null) {
+			listeDesLivres = servicePourLivre.rechercherLivreAuteur(auteurs)
+			[auteurs: listeDesLivres]
 		}
 		
 	}

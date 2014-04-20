@@ -41,7 +41,7 @@ class CSVManager {
 	 * Permet d'obtenir les livre contenue dans le csv
 	 * @return
 	 */
-	List<Livre> getLivres(){
+	List<Livre> getLivres() {
 		
 		def listeDeFichier = new ArrayList<Livre>();
 		

@@ -30,38 +30,56 @@
 				
 					Recherche par : <br/> <br/> <br/>
 					
+					Type de Document <br/> <br/>
 					<select class="textbox" onchange='this.form.submit()' onMouseOver="hide()" style='width:300px;height:40px;' name="typeDoc">
-						<option id='titre'> Type de Document </option> 
+						<option id='titre' value=''> </option>
 						<option id='Nouveauté' value='Nouveauté'> Nouveauté </option>
 						<option id='Livre ado' value='Livre ado'> Livre ado </option>
 					</select>
 					
 					<br/> <br/>
 					
-					<select class="textbox" onchange='this.form.submit()' onMouseOver="hide()" style='width:300px;height:40px;' name="titreL">
-						<option id='titre'> Titre </option> 
-						<option id='Titre' value='Titre'> Titre </option>
-					</select>
+					Titre <br/> <br/>
+					<input class="textbox" type="text" name="titre" />
 					
 					<br/> <br/>
 					
-					<select class="textbox" onchange='this.form.submit()' onMouseOver="hide()" style='width:300px;height:40px;' name="auteurs">
-						<option id='titre'> Auteur </option> 
-						<option id='Auteur' value='Auteur'> Auteur </option>
-					</select>
+					Auteurs <br/> <br/>
+					<input class="textbox" type="text" name="auteurs" />
 					
 					<br/> <br/>
 					<input type='submit' value='rerchercher' width=250 class='coolButton' />
+					
+					
+					Résultats de la recherche par type de document : <br/>
 					<%
-						List<Livre> listeLivres = livres
+						List<Livre> listeLivres = typeDoc
 						
-						if (listeLivres != null) out.print("<p>" + listeLivres + "</p>")
-						else out.print("<p>listeLivres null </p>")
+						/*if (listeLivres != null) out.print("<p>" + listeLivres + "</p>")
+						else out.print("<p>listeLivres null </p>")*/
 						
 						for (Livre l : listeLivres) {
 							out.print("<p>"+ l.titre + " " + l.nombreExemplairesDisponibles + "</p>");
 						}
-					 %>
+					%>
+					 
+					Résultats de la recherche par titre : <br/>
+					<%
+						listeLivres = titre
+						
+						for (Livre l : listeLivres) {
+							out.print("<p>"+ l.titre + " " + l.nombreExemplairesDisponibles + "</p>");
+						}
+					%>
+					
+					Résultats de la recherche par auteurs : <br/>
+					<%
+						listeLivres = auteurs
+						
+						for (Livre l : listeLivres) {
+							out.print("<p>"+ l.titre + " " + l.nombreExemplairesDisponibles + "</p>");
+						}
+					%>
 				</p>
 
 
@@ -85,16 +103,7 @@
 
 		</div>
 
-
-
 	</div>
-	
-	<script type="text/javascript">
-		function hide()
-		{
-			document.getElementById('titre').style.display = 'none';
-		}
-	</script>
 
 </body>
 
