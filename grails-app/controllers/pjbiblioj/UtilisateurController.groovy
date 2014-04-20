@@ -1,5 +1,6 @@
 package pjbiblioj
 
+import com.biblioj.services.UtilisateurService
 import org.springframework.dao.DataIntegrityViolationException
 
 class UtilisateurController {
@@ -9,6 +10,29 @@ class UtilisateurController {
     def index() {
         redirect(action: "list", params: params)
     }
+	
+	
+	def connexion(){
+		println "looooooool"
+		UtilisateurService utilisateurService = new UtilisateurService()
+		utilisateurService.deconnecter(session)
+	
+		def ident = params["id"]
+		def password  = params["password"]
+		
+		println ident + " " + password
+		
+	/*	utilisateurService.connecter(ident, password,session)
+		Utilisateur u = utilisateurService.getUtilisateurConnecter(session)
+		 
+		println "ggg " + u.getNom()
+		println "ggg " + u.getIdentifiant()
+		println "ggg " + u.getMotDePasse()*/
+		 
+	
+		
+		//redirect(uri: request.getHeader('referer') )
+	}
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
