@@ -6,8 +6,6 @@
 
 <meta name="layout" content="struct">
 
-
-
 </head>
 
 <body>
@@ -37,7 +35,7 @@
 					
 					
 					
-					<input type='submit' value='rerchercher typeDoc'  width=250 class='coolButton' />
+					<input type='submit' value='rerchercher typeDoc' onclick='url()' width=250 class='coolButton' />
 					<%
 						List<Livre> listeLivres = livres
 						
@@ -87,7 +85,15 @@
 	</div>
 	<!-- /SocialBox -->
 
+	<script type="text/javascript">
+		function url() {
+			var uri = document.location.href;
+			var dec = decodeURI(uri);
 
+			//alert(uri + '\n' + dec);
+			document.location.href = dec;
+		}
+	</script>
 
 
 </body>

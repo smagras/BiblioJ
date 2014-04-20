@@ -18,7 +18,7 @@ class LivreController {
     }
 	
 	def rechercher() {
-		UtilisateurService utilisateurService = new UtilisateurService()
+		/*UtilisateurService utilisateurService = new UtilisateurService()
 		utilisateurService.connecter("mgs", "pass",session)
 		Utilisateur u = utilisateurService.getUtilisateurConnecter(session)
 		
@@ -28,7 +28,7 @@ class LivreController {
 		
 		utilisateurService.deconnecter(session)
 		 
-		params.valeurFun = "sdfdsfdsfdfs"
+		params.valeurFun = "sdfdsfdsfdfs"*/
 		
 
 		String typeDocLivre = params["typeDoc"]
