@@ -49,34 +49,34 @@
 					
 					<br/> <br/>
 					<input type='submit' value='rerchercher' width=250 class='coolButton' />
-					
+					<br/> <br/>
 					
 					Résultats de la recherche par type de document : <br/>
 					<%
-						List<Livre> listeLivres = typeDoc
+						List<Livre> typeDocLivres = typeDoc
 						
 						/*if (listeLivres != null) out.print("<p>" + listeLivres + "</p>")
 						else out.print("<p>listeLivres null </p>")*/
 						
-						for (Livre l : listeLivres) {
+						for (Livre l : typeDocLivres) {
 							out.print("<p>"+ l.titre + " " + l.nombreExemplairesDisponibles + "</p>");
 						}
 					%>
 					 
 					Résultats de la recherche par titre : <br/>
 					<%
-						listeLivres = titre
+						List<Livre> titreLivres = titre
 						
-						for (Livre l : listeLivres) {
+						for (Livre l : titreLivres) {
 							out.print("<p>"+ l.titre + " " + l.nombreExemplairesDisponibles + "</p>");
 						}
 					%>
 					
 					Résultats de la recherche par auteurs : <br/>
 					<%
-						listeLivres = auteurs
+						List<Livre> auteurLivres = auteurs
 						
-						for (Livre l : listeLivres) {
+						for (Livre l : auteurLivres) {
 							out.print("<p>"+ l.titre + " " + l.nombreExemplairesDisponibles + "</p>");
 						}
 					%>

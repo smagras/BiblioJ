@@ -68,12 +68,14 @@ class LivreService {
 		def livresEnFonctionAuteur = new ArrayList<Livre>()
 		Auteur auteur = Auteur.findByNom(nom)
 		
-		int tailleListe = auteur.livres.size()
-		if (tailleListe > 5) tailleListe = 5
-		
-		for (int i=0; i<tailleListe; i++) {
-			Livre livre = auteur.livres.toList().get(i)
-			livresEnFonctionAuteur.add(livre)
+		if (auteur != null) {
+			int tailleListe = auteur.livres.size()
+			if (tailleListe > 5) tailleListe = 5
+			
+			for (int i=0; i<tailleListe; i++) {
+				Livre livre = auteur.livres.toList().get(i)
+				livresEnFonctionAuteur.add(livre)
+			}
 		}
 		
 		return livresEnFonctionAuteur
