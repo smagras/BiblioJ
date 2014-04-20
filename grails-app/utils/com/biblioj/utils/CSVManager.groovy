@@ -48,8 +48,9 @@ class CSVManager {
 		HashMap<String,TypeDocument> uniqueTypeDocument = new HashMap<String,TypeDocument>()
 		
 		if (fichierCSV.exists()) {
+			String content = fichierCSV.getText("UTF-8") 
 			
-			fichierCSV.splitEachLine(';') { row ->	
+			content.splitEachLine(';') { row ->	
 				
 				Livre livre = new Livre(nombreExemplaires:7,nombreExemplairesDisponibles:7);
 				livre.setTitre(row[3])

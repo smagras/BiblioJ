@@ -12,10 +12,8 @@ import pjbiblioj.TypeDocument;
 @Mock( [Auteur,Livre,TypeDocument] )
 class LivreServiceTests {
 	
-	
 	TypeDocument typeDoc1
 	TypeDocument typeDoc2
-
 	
 	@Before
 	public void setUp(){
@@ -55,16 +53,16 @@ class LivreServiceTests {
 		l6.addToAuteurs(auteur2)
 		l6.save(flush: true)
 	}
-
+	
 	
 	@Test
 	public void testRechercherLivreTypeDoc() {
 		LivreService service = new LivreService()
 		List<Livre> livres = service.rechercherLivreTypeDoc(typeDoc1)
 		
-		livres.each { l->
+		/*livres.each { l->
 			println 
-		}
+		}*/
 		assert "Petit Bateau".equals(livres.get(0).getTitre() )
 		assert "Grand Bateau".equals( livres.get(1).getTitre() )
 		assert "Moyen Bateau".equals( livres.get(2).getTitre() )

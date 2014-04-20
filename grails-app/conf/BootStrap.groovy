@@ -42,6 +42,12 @@ class BootStrap {
 			it.save(flush: true)
 		}
 		
+		LivreService service = new LivreService()
+		/*def livreR = service.rechercherLivres(new TypeDocument(intitule:"Livre ado"), "", "Collins")
+		println livreR.titre*/
+		
+		def livreRE = service.rechercherLivreAuteur( "Collins" )
+		println livreRE.titre
     }
     def destroy = {
     }
