@@ -22,9 +22,8 @@ class BootStrap {
 		l6.addToAuteurs(auteur2)
 		l6.save(flush: true)
 		
-		Panier p = new Panier(nom:"paul")
+		Panier p = new Panier(nom:"steve")
 		p.addLivres([l5,l6])
-		p.suppLivre(l5)
 		p.save(flush: true)
 		
 		Utilisateur paul = new Utilisateur(nom:"paul",identifiant:"Polodu12",motDePasse:"pass",panier:p)

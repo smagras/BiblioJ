@@ -116,4 +116,15 @@ class LivreService {
 		
 		return livresEnFonctionAuteur
 	}
+	
+	
+	/**
+	 * Permet d'obtenir tout les type de documents
+	 * @return
+	 */
+	def getTypesDeDocuments(){
+		
+		return TypeDocument.findAll()
+	}
+	
 }

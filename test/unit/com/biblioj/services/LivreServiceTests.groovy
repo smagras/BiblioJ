@@ -12,6 +12,7 @@ import pjbiblioj.TypeDocument;
 @Mock( [Auteur,Livre,TypeDocument] )
 class LivreServiceTests {
 	
+	
 	TypeDocument typeDoc1
 	TypeDocument typeDoc2
 	
@@ -71,7 +72,6 @@ class LivreServiceTests {
 		assert true == true
 		
 	}
-	
 	
 	
 }

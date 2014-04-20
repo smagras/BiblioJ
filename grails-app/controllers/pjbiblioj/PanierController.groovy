@@ -1,5 +1,6 @@
 package pjbiblioj
 
+import com.biblioj.services.UtilisateurService
 import org.springframework.dao.DataIntegrityViolationException
 
 class PanierController {
@@ -14,6 +15,26 @@ class PanierController {
         params.max = Math.min(max ?: 10, 100)
         [panierInstanceList: Panier.list(params), panierInstanceTotal: Panier.count()]
     }
+	
+	def afficher(){
+		
+		UtilisateurService utilisateurService = new UtilisateurService()
+		Utilisateur utilisateurConnecter =  utilisateurService.getUtilisateurConnecter(session)
+		
+		if (utilisateurConnecter){
+			
+			Panier monPanier = utilisateurConnecter.getPanier()
+			
+			def deleteP = params["delete"]
+			if (deleteP){
+				Livre livreDelete = Livre.findByTitre(deleteP) 
+				monPanier.suppLivre(livreDelete)
+				redirect(uri: request.getHeader('referer') )
+			}
+
+		}
+		
+	}
 
     def create() {
         [panierInstance: new Panier(params)]

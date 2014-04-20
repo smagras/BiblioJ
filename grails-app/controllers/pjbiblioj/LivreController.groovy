@@ -18,20 +18,13 @@ class LivreController {
     }
 	
 	def rechercher() {
-		/*UtilisateurService utilisateurService = new UtilisateurService()
-		utilisateurService.connecter("mgs", "pass",session)
-		Utilisateur u = utilisateurService.getUtilisateurConnecter(session)
 		
-		println "ggg " + u.getNom()
-		println "ggg " + u.getIdentifiant()
-		println "ggg " + u.getMotDePasse()
-		
-		utilisateurService.deconnecter(session)
-		 
-		params.valeurFun = "sdfdsfdsfdfs"*/
 		
 		
 		LivreService servicePourLivre = new LivreService()
+		
+		params.typesDeDocuments = servicePourLivre.getTypesDeDocuments()
+		
 		
 		String url = request.getRequestURL().toString()
 		url = url.substring(0, 55)

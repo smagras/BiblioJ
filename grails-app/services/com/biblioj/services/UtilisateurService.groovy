@@ -59,6 +59,7 @@ class UtilisateurService {
 				utilisateurSelectionner = it
 			}
 			mySession.user = utilisateurSelectionner
+			mySession.livres = utilisateurSelectionner.getPanier().getLivres()
 			return true
 		}
 		
@@ -85,7 +86,11 @@ class UtilisateurService {
 	 * @return
 	 */
 	def getUtilisateurConnecter(HttpSession mySession){
-		Utilisateur utilisateur = mySession["user"]
+		Utilisateur utilisateurSession = mySession["user"]
+		Utilisateur utilisateur = null
+		if (utilisateurSession) {
+			utilisateur = Utilisateur.findByIdentifiant(utilisateurSession.getIdentifiant())
+		}
 		return utilisateur
 	}
 }
