@@ -59,6 +59,7 @@ class UtilisateurService {
 				utilisateurSelectionner = it
 			}
 			mySession.user = utilisateurSelectionner
+			mySession.livres = utilisateurSelectionner.getPanier().getLivres()
 			return true
 		}
 		

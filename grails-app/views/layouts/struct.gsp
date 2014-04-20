@@ -1,4 +1,6 @@
 <%@ page import="pjbiblioj.Utilisateur" %>
+<%@ page import="pjbiblioj.Panier" %>
+<%@ page import="pjbiblioj.Livre" %>
 <%@ page import="com.biblioj.services.UtilisateurService" %>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
@@ -105,6 +107,29 @@
 					
 					
 					out.print(htmlCode)
+					%>
+					
+					<%
+						if (utilisateurConnecter){
+							htmlCode =""
+							
+							htmlCode += "<h4>Mon Panier</h4>"
+							
+							Utilisateur moi = Utilisateur.findByIdentifiant(utilisateurConnecter.getIdentifiant())
+							
+							Panier monPanier = moi.getPanier()
+							HashSet<Livre> mesLivres = monPanier.getLivres()
+							mesLivres.each{
+								htmlCode += "<img src='${resource(dir: 'images', file: 'icone_oeil.gif')}' style='width:20px;height:15px'  /> "
+								htmlCode += "<img src='${resource(dir: 'images', file: 'IC113990.gif')}' style='width:15px;height:15px'  /> "
+								 
+								htmlCode += it.getTitre() + "</br>"
+		
+								
+							}
+							
+							out.print(htmlCode)
+						}
 					%>
 				
 				</form>
