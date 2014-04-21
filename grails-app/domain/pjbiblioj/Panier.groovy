@@ -27,4 +27,8 @@ class Panier {
 	def suppLivre(Livre livre) {
 		livres.remove(livre)
 	}
+	
+	def vider(){
+		livres.clear();
+	}
 }

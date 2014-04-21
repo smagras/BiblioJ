@@ -1,5 +1,8 @@
 package pjbiblioj
 
+import com.biblioj.services.ReservationService
+import com.biblioj.services.UtilisateurService
+
 import org.springframework.dao.DataIntegrityViolationException
 
 class ReservationController {
@@ -9,6 +12,33 @@ class ReservationController {
     def index() {
         redirect(action: "list", params: params)
     }
+	
+	def actionUtilisateur(){
+		def order = params["order"]
+		if (order){
+			
+			UtilisateurService service = new UtilisateurService()
+			
+			if (order == "v"){
+				service.viderPanier(session)
+				redirect(uri: '/../PJBiblioJ/livre/rechercher' )
+			}
+		}
+	}
+	
+	def afficher(){
+		ReservationService serviceReservation = new ReservationService()
+		
+		UtilisateurService utilisateurService = new UtilisateurService()
+		Utilisateur utilisateurConnecter =  utilisateurService.getUtilisateurConnecter(session)
+		
+		ArrayList<Livre> livresImpossibles = serviceReservation.getLivresReservationImpossible(utilisateurConnecter)
+		ArrayList<Livre> livresPossibles = serviceReservation.getLivresReservationPossible(utilisateurConnecter)
+		
+		params.livresImpossibles = livresImpossibles
+		params.livresPossibles = livresPossibles
+
+	}
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)

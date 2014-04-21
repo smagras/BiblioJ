@@ -11,7 +11,19 @@ import pjbiblioj.Panier
 import pjbiblioj.Utilisateur
 
 class UtilisateurService {
-
+	
+	def viderPanier(HttpSession mySession){
+		Utilisateur utilisateur = getUtilisateurConnecter(mySession)
+		
+		if (utilisateur){
+			Panier panier = utilisateur.getPanier()
+			
+			panier.vider()
+			return true
+		}
+		
+		return false
+	}
 	
 	def inscrire(String pidentifiant,String pmotDePasse,String pnom){
 		
