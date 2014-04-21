@@ -20,31 +20,31 @@ class LivreController {
 	def rechercher() {
 		
 		
-		
 		LivreService servicePourLivre = new LivreService()
 		
 		params.typesDeDocuments = servicePourLivre.getTypesDeDocuments()
 		
 		
-		String url = request.getRequestURL().toString()
+		/*String url = request.getRequestURL().toString()
 		url = url.substring(0, 55)
 		
 		url += '?' + request.queryString
 		//url = URLEncoder.encode(url, "UTF-8")
 		//url = URLDecoder.decode(url, "ISO8859-1")
 		url = URLDecoder.decode(url, "UTF-8")
-		//println url
+		//println url*/
 		
 		String typeDocLivre = params["typeDoc"]
 		String titreLivre = params["titre"]
 		String auteurs = params["auteurs"]
+		String page = params["page"]
+		
+		if (page == null) page = "0"
 		
 		TypeDocument typeDoc = new TypeDocument(intitule:typeDocLivre)
 		def listeDesLivres = servicePourLivre.rechercherLivres(typeDoc,titreLivre,auteurs)
 		
-		[livres: listeDesLivres]
-		
-		//redirect(url: url)//"/PJBiblioJ/grails/livre/rechercher?typeDoc=Nouveauté")
+		[livres: listeDesLivres, page: page]
 	}
 	
 

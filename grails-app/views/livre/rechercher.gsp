@@ -62,20 +62,52 @@
 					Résultats de la recherche : <br/> <br/>
 					<%
 						List<Livre> listeLivres = livres
+						String pageS = page
+						Integer page = Integer.valueOf(pageS);
 						
-						int i=0;
-						while (i<5 && i<listeLivres.size()) {
+						int i = page * 5;
+						int nbResPages = i+5;
+						
+						while (i<nbResPages && i<listeLivres.size()) {
 							Livre l = listeLivres.get(i);
-							out.print("<p>"+ l.titre + " " + l.nombreExemplairesDisponibles + "</p>");
+							out.print("<p>"+ l.titre + " " + l.auteurs.nom + " " + l.typeDoc.intitule + " " + 
+								l.nombreExemplairesDisponibles + "</p>");
 							i++;
 						}
 					%>
 				</p>
 
-
+				
+				<a href="<%	
+					int pageMoins = page;
+					pageMoins--;
+					String url = "../livre/rechercher"
+					url += "?typeDoc="+params["typeDoc"]
+					url += "&titre="+params["titre"]
+					url += "&auteurs="+params["auteurs"]
+					url += "&page=" + pageMoins;
+					print(url);
+				%>">
+					<img alt="prev" src="${resource(dir: 'images', file: 'button_prev_100857.jpg')}"> 
+				</a>
+				
+				
+				<a href="<%	
+					int pagePlus = page;
+					pagePlus++;
+					url = "../livre/rechercher"
+					url += "?typeDoc="+params["typeDoc"]
+					url += "&titre="+params["titre"]
+					url += "&auteurs="+params["auteurs"]
+					url += "&page=" + pagePlus;
+					print(url);
+				%>"> 
+					<img alt="next" src="${resource(dir: 'images', file: 'button_next_100857.jpg')}"> 
+				</a>
+				
+				
 				<p>
-					<br />
-
+					<br/>
 				</p>
 
 
@@ -94,7 +126,7 @@
 		</div>
 
 	</div>
-
+	
 </body>
 
 </html>
