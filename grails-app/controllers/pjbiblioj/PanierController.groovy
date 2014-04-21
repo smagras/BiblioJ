@@ -20,7 +20,8 @@ class PanierController {
 		
 		UtilisateurService utilisateurService = new UtilisateurService()
 		Utilisateur utilisateurConnecter =  utilisateurService.getUtilisateurConnecter(session)
-		
+		params.livresPanier = null
+		params.livresEnVue = null
 		if (utilisateurConnecter){
 			
 			Panier monPanier = utilisateurConnecter.getPanier()
@@ -31,7 +32,19 @@ class PanierController {
 				monPanier.suppLivre(livreDelete)
 				redirect(uri: request.getHeader('referer') )
 			}
+			
+			def see = params["see"]
+			if (see){
+				Livre livreSee = Livre.findByTitre(see)
+				HashSet<Livre> livresPanier = monPanier.getLivres()
+				params.livresPanier = livresPanier
+				params.livresEnVue = livreSee
+				
+			}
 
+		}
+		else{
+			redirect(uri: '/../PJBiblioJ/livre/rechercher' )
 		}
 		
 	}

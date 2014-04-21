@@ -119,7 +119,7 @@
 							HashSet<Livre> mesLivres = monPanier.getLivres()
 							
 							mesLivres.each{
-								htmlCode += "<a href='../panier/afficher?see="+it.id+"'>"
+								htmlCode += "<a href='../panier/afficher?see="+it.getTitre()+"'>"
 								htmlCode += "<img src='${resource(dir: 'images', file: 'icone_oeil.gif')}' style='width:20px;height:15px'  />"
 								htmlCode += "</a> "
 								htmlCode += "<a href='../panier/afficher?delete="+it.getTitre()+"'>"
