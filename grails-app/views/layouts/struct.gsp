@@ -30,12 +30,12 @@
 		<!-- menu du haut -->
 		<nav>
 			<ul id="menu">
-				<li><a href="home"> <img
+				<li><a href="/../PJBiblioJ/livre/rechercher"> <img
 						src="${resource(dir: 'images', file: 'logo.bmp')}"
 						style="vertical-align: middle;" />
 				</a></li>
-				<li style="margin-left: 50px"><a href="home">Livres</a></li>
-				<li><a href="velo">Mon Panier</a></li>
+				<li style="margin-left: 50px"><a href="/../PJBiblioJ/livre/rechercher/">Livres</a></li>
+				<li><a href="/../PJBiblioJ/panier/afficher">Mon Panier</a></li>
 				<li><a href="monTrajet">Mon Trajet</a></li>
 			</ul>
 		</nav>
