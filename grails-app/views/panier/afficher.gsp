@@ -46,7 +46,7 @@
 					}
 				%>
 				
-				<h5>Autres articles</h5>
+				<h5>Articles sélectionner</h5>
 				
 				<% 
 
