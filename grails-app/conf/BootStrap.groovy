@@ -11,17 +11,6 @@ import pjbiblioj.Utilisateur
 class BootStrap {
 
     def init = { servletContext ->
-		/*TypeDocument typeDoc = new TypeDocument(intitule:"Nouveauté")
-		Auteur auteur2 = new Auteur(nom:"Hugo",prenom:"Victor").save(flush: true)
-		
-		Livre l5 = new Livre(titre:"Titi",nombreExemplaires:2,nombreExemplairesDisponibles:1,typeDoc:typeDoc)
-		l5.addToAuteurs(auteur2)
-		l5.save(flush: true)
-		
-		Livre l6 = new Livre(titre:"Grosminet",nombreExemplaires:2,nombreExemplairesDisponibles:1,typeDoc:typeDoc)
-		l6.addToAuteurs(auteur2)
-		l6.save(flush: true)*/
-		
 		Panier p = new Panier(nom:"steve")
 		p.save(flush: true)
 		
