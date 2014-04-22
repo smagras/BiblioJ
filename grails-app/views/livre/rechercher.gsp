@@ -96,7 +96,7 @@
 					url += "&page=" + pageMoins;
 					print(url);
 				%>">
-					<img alt="prev" src="${resource(dir: 'images', file: 'button_prev_100857.jpg')}"> 
+					<img alt="prev" src="${resource(dir: 'images', file: 'button_prev_100857.jpg')}" style="width:20px;height:20px;"> 
 				</a>
 				
 				
@@ -110,7 +110,7 @@
 					url += "&page=" + pagePlus;
 					print(url);
 				%>"> 
-					<img alt="next" src="${resource(dir: 'images', file: 'button_next_100857.jpg')}"> 
+					<img alt="next" src="${resource(dir: 'images', file: 'button_next_100857.jpg')}" style="width:30px;height:30px;"> 
 				</a>
 				
 				
