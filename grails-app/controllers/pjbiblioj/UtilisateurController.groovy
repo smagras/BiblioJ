@@ -43,7 +43,7 @@ class UtilisateurController {
 	
 	
 	def connexion(){
-		println "eeeeeeeeeeeee"
+		
 		UtilisateurService utilisateurService = new UtilisateurService()
 
 	

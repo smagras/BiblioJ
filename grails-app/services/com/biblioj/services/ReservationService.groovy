@@ -5,6 +5,11 @@ import pjbiblioj.Panier
 import pjbiblioj.Reservation
 import pjbiblioj.Utilisateur
 
+
+/**
+ * Permet de crée des reservation
+ *
+ */
 class ReservationService {
 	
 	/**
@@ -20,7 +25,8 @@ class ReservationService {
 			it.setNombreExemplairesDisponibles(it.getNombreExemplairesDisponibles() - 1)
 		}
 		Date maDate = new Date();
-		maDate.next() 
+		maDate = maDate.next()
+		
 		reservation.setDateReservation(maDate)
 		reservation.getLivres().addAll(livres)
 		//reservation.setCode(reservation.id)

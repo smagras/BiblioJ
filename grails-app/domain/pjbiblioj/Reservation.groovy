@@ -9,9 +9,9 @@ class Reservation {
 	
 	static hasMany = [livres:Livre]
 	static constraints = {
-		dateReservation validator: { val ->
+		/*dateReservation validator: { val ->
 			val >= new Date()
-		}
+		}*/
 		livres nullable: true
     }
 }

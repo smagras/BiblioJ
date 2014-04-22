@@ -40,7 +40,7 @@
 						reservationsLivres.each{
 							Reservation reservation = it
 							out.print "<h4>"
-							out.print " ( CODE : " + reservation.id + " ) Réservation disponible dès " + reservation.getDateReservation() + "</h4>"
+							out.print " ( CODE : " + reservation.id + " ) Réservation disponible jusqu\'au " + reservation.getDateReservation() + "</h4>"
 							
 							reservation.getLivres().each{ livre ->
 								out.print "- " + livre.getTitre() + "<br/>"

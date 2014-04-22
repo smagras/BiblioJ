@@ -71,10 +71,14 @@
 						 
 				 	}
 					else{
+						out.print("<br/>")
 						out.print("<blockquote class='style1'><span>")
 						out.print("<h4><img src='${resource(dir: 'images', file: 'icone_oeil.gif')}' style='width:20px;height:15px'  /> Informations sur votre réservation</h4>")
 						out.print("Il n'y a aucuns livres disponible.")
 						out.print("</span></blockquote><br>")
+						out.print("<a href='/../PJBiblioJ/reservation/actionUtilisateur?order=a' >")
+						out.print("<input type='button' value='Annuler' width=250 class='coolButton' />")
+						out.print("<a/>")
 					}
 					 
 					 

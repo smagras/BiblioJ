@@ -12,6 +12,11 @@ import pjbiblioj.Panier
 import pjbiblioj.Reservation
 import pjbiblioj.Utilisateur
 
+
+
+/**
+ * Services pour les utilisateur et leur actions quand a la base de donnée
+ */
 class UtilisateurService {
 	
 	def viderPanier(HttpSession mySession){
@@ -95,6 +100,13 @@ class UtilisateurService {
 		
 	}
 	
+	
+	/**
+	 * Permet d'ajouter une reservation a l'utilisateur corrant
+	 * @param mySession
+	 * @param reservation
+	 * @return
+	 */
 	def ajouterReservation(HttpSession mySession,Reservation reservation){
 		Utilisateur utilisateur = getUtilisateurConnecter(mySession)
 		
@@ -102,6 +114,12 @@ class UtilisateurService {
 		utilisateur.save(flush: true)
 	}
 	
+	
+	/**
+	 * Permet d'obtenir les reservation de l'utilisateur courant
+	 * @param mySession
+	 * @return
+	 */
 	def getReservations(HttpSession mySession){
 		def reservations = new ArrayList<Reservation>()
 		

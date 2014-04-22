@@ -25,15 +25,6 @@ class LivreController {
 		params.typesDeDocuments = servicePourLivre.getTypesDeDocuments()
 		
 		
-		/*String url = request.getRequestURL().toString()
-		url = url.substring(0, 55)
-		
-		url += '?' + request.queryString
-		//url = URLEncoder.encode(url, "UTF-8")
-		//url = URLDecoder.decode(url, "ISO8859-1")
-		url = URLDecoder.decode(url, "UTF-8")
-		//println url*/
-		
 		String typeDocLivre = params["typeDoc"]
 		String titreLivre = params["titre"]
 		String auteurs = params["auteurs"]

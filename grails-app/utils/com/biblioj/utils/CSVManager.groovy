@@ -52,7 +52,7 @@ class CSVManager {
 			
 			content.splitEachLine(';') { row ->	
 				
-				Livre livre = new Livre(rang:row[0],nombreExemplaires:7,nombreExemplairesDisponibles:7);
+				Livre livre = new Livre(rang:row[0],nombreExemplaires:5,nombreExemplairesDisponibles:1);
 				livre.setTitre(row[3])
 				
 				if (!uniqueTypeDocument.get(row[1])){
