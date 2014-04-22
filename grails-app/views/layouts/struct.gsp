@@ -28,15 +28,25 @@
 	
 		<header>
 		<!-- menu du haut -->
+		
+		<% 
+			UtilisateurService utilisateurService = new UtilisateurService()
+			Utilisateur utilisateurConnecter =  utilisateurService.getUtilisateurConnecter(session)
+		%>
 		<nav>
 			<ul id="menu">
 				<li><a href="/../PJBiblioJ/livre/rechercher"> <img
 						src="${resource(dir: 'images', file: 'logo.bmp')}"
 						style="vertical-align: middle;" />
 				</a></li>
-				<li style="margin-left: 50px"><a href="/../PJBiblioJ/livre/rechercher/">Livres</a></li>
-				<li><a href="/../PJBiblioJ/panier/afficher">Mon Panier</a></li>
-				<li><a href="/../PJBiblioJ/reservation/afficher">Mes réservations</a></li>
+				<li style="margin-left: 50px"><a href="/../PJBiblioJ/livre/rechercher/">Recherche</a></li>
+				<% 
+				if (utilisateurConnecter){
+					print '<li><a href="/../PJBiblioJ/panier/afficher">Panier</a></li>'
+					print '<li><a href="/../PJBiblioJ/reservation/afficher">Réservations</a></li>'
+				}
+				
+				%>
 			</ul>
 		</nav>
 		</header>
@@ -58,8 +68,6 @@
 			<div class="socialBox">
 
 				<h2><% 
-				UtilisateurService utilisateurService = new UtilisateurService()
-				Utilisateur utilisateurConnecter =  utilisateurService.getUtilisateurConnecter(session)
 				
 				if (utilisateurConnecter){
 					
@@ -97,7 +105,7 @@
 						htmlCode += "<input class='textbox' type='text' value='' style='width:200px' name='id' /><br/>"
 						htmlCode += "Mot de passe<br/>"
 						htmlCode += "<input class='textbox' type='password'  style='width:200px' name='password' /><br/><br/>"
-						htmlCode += "<a href='../utilisateur/inscription' >Inscrivez vous</a></br></br>"
+						htmlCode += "<a href='/../PJBiblioJ/utilisateur/inscription' >Inscrivez vous</a></br></br>"
 						htmlCode += "<input type='submit' value='Connexion'  width=250 class='coolButton' />"
 						
 						htmlCode += "</div>"		
@@ -113,7 +121,7 @@
 						if (utilisateurConnecter){
 							htmlCode =""
 							
-							htmlCode += "<h4>Mon Panier</h4>"
+							htmlCode += "<a href='/../PJBiblioJ/panier/afficher'><h4>Mon Panier</h4></a>"
 							
 							Panier monPanier = utilisateurConnecter.getPanier()
 							HashSet<Livre> mesLivres = monPanier.getLivres()
@@ -129,6 +137,7 @@
 		
 								
 							}
+			
 							
 							out.print(htmlCode)
 						}

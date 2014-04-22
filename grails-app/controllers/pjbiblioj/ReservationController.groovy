@@ -35,6 +35,10 @@ class ReservationController {
 					service.viderPanier(session)
 					
 				}	
+				
+				if (order == "a"){
+					service.viderPanier(session)
+				}
 			}
 		
 		}

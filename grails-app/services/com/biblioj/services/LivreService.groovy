@@ -25,9 +25,13 @@ class LivreService {
 		def listeEnFonctionDesAuteurs = rechercherLivreAuteur(auteur)
 		
 		def listeDeListeValide = new ArrayList<List>()
+		
+		if (typeDoc.getIntitule() == "" && titre == "" && auteur == "") return livresTries
+		
 		if (!typeDoc.isEmpty()) listeDeListeValide.add(listeEnFonctionDesDocuments)
 		if (titre != "") listeDeListeValide.add(listeEnFonctionDuTitre)
 		if (auteur != "") listeDeListeValide.add(listeEnFonctionDesAuteurs)
+		
 		
 		
 		if (listeDeListeValide.size() == 1) {
@@ -47,11 +51,13 @@ class LivreService {
 						estCommun = false
 				}
 				
-				if (estCommun)
+				if (estCommun){
+					
 					livresTries.add(livre)
+				}
 			}
 			
-			livresTries
+			return livresTries
 		}
 	}
 	

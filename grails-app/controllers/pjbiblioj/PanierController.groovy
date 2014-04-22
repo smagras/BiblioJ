@@ -31,7 +31,8 @@ class PanierController {
 			
 			def deleteP = params["delete"]
 			if (deleteP){
-				Livre livreDelete = Livre.findByTitre(deleteP) 
+				LivreService serviceL = new LivreService()
+				Livre livreDelete = serviceL.rechercherLivreRang(deleteP)
 				monPanier.suppLivre(livreDelete)
 				redirect(uri: request.getHeader('referer') )
 			}
