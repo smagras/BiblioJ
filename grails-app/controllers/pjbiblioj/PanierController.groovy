@@ -1,5 +1,6 @@
 package pjbiblioj
 
+import com.biblioj.services.LivreService
 import com.biblioj.services.UtilisateurService
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -47,6 +48,23 @@ class PanierController {
 			redirect(uri: '/../PJBiblioJ/livre/rechercher' )
 		}
 		
+	}
+	
+	def ajouter() {
+		
+		LivreService servicePourLivre = new LivreService()
+		UtilisateurService utilisateurService = new UtilisateurService()
+		Utilisateur utilisateurConnecter =  utilisateurService.getUtilisateurConnecter(session)
+		
+		String rangLivre = params["livre"]
+		Livre livre = servicePourLivre.rechercherLivreRang(rangLivre)
+		
+		if (utilisateurConnecter) {
+			Panier monPanier = utilisateurConnecter.getPanier()
+			monPanier.addLivre(livre)
+		}
+		
+		redirect(uri: request.getHeader('referer'))
 	}
 
     def create() {

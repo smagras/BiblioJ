@@ -11,7 +11,7 @@ import pjbiblioj.Utilisateur
 class BootStrap {
 
     def init = { servletContext ->
-		TypeDocument typeDoc = new TypeDocument(intitule:"Nouveauté")
+		/*TypeDocument typeDoc = new TypeDocument(intitule:"Nouveauté")
 		Auteur auteur2 = new Auteur(nom:"Hugo",prenom:"Victor").save(flush: true)
 		
 		Livre l5 = new Livre(titre:"Titi",nombreExemplaires:2,nombreExemplairesDisponibles:1,typeDoc:typeDoc)
@@ -20,10 +20,9 @@ class BootStrap {
 		
 		Livre l6 = new Livre(titre:"Grosminet",nombreExemplaires:2,nombreExemplairesDisponibles:1,typeDoc:typeDoc)
 		l6.addToAuteurs(auteur2)
-		l6.save(flush: true)
+		l6.save(flush: true)*/
 		
 		Panier p = new Panier(nom:"steve")
-		p.addLivres([l5,l6])
 		p.save(flush: true)
 		
 		Utilisateur paul = new Utilisateur(nom:"paul",identifiant:"Polodu12",motDePasse:"pass",panier:p)
@@ -41,14 +40,14 @@ class BootStrap {
 			it.save(flush: true)
 		}
 		
-		LivreService service = new LivreService()
+	/*	LivreService service = new LivreService()
 		def livreR = service.rechercherLivres(new TypeDocument(intitule:"Livre adulte"), "Barbe", "")
 		println livreR.titre
 	
-	/*	def livreRE = service.rechercherLivreAuteur( "Ducr" )
-		println livreRE.titre*/
+		def livreRE = service.rechercherLivreAuteur( "Ducr" )
+		println livreRE.titre
 		
-		def livreRE = service.rechercherLivreTypeDoc(new TypeDocument(intitule:"Livre adulte"))
+		def livreRE = service.rechercherLivreTypeDoc(new TypeDocument(intitule:"Livre adulte")) */
 		//println livreRE.titre
     }
     def destroy = {

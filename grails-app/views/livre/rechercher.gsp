@@ -70,8 +70,16 @@
 						
 						while (i<nbResPages && i<listeLivres.size()) {
 							Livre l = listeLivres.get(i);
-							out.print("<p>"+ l.titre + " " + l.auteurs.nom + " " + l.typeDoc.intitule + " " + 
-								l.nombreExemplairesDisponibles + "</p>");
+							
+							if (l.nombreExemplairesDisponibles > 0) {
+								out.print("<a href='../panier/ajouter?livre="+l.rang+"'>" + l.titre + " " + l.auteurs.nom + 
+									" " + l.typeDoc.intitule + " " + l.nombreExemplairesDisponibles + "</a> <br/>");
+							}
+							else {
+								out.print("<p>"+ l.titre + " " + l.auteurs.nom + " " + l.typeDoc.intitule + " " +
+									l.nombreExemplairesDisponibles + "</p> <br/>");
+							}
+							
 							i++;
 						}
 					%>

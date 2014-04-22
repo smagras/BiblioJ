@@ -9,6 +9,14 @@ import pjbiblioj.TypeDocument;
  */
 class LivreService {
 	
+	
+	/**
+	 * Permet de retourner tous les livres vérifiant les 3 types de recherche
+	 * @param typeDoc
+	 * @param titre
+	 * @param auteur
+	 * @return livres
+	 */
 	def rechercherLivres(TypeDocument typeDoc, String titre, String auteur) {
 		def livresTries = new ArrayList<Livre>()
 		
@@ -119,12 +127,34 @@ class LivreService {
 	
 	
 	/**
+	 * Permet de retourner le livre correspondant au rang indiqué
+	 * @param rang
+	 * @return livre
+	 */
+	def rechercherLivreRang(String rang) {
+		
+		int i=0
+		boolean trouve = false
+		Long rangL = Long.valueOf(rang)
+		Livre livre = null
+		List<Livre> listeDesLivres = Livre.findAll()
+		
+		while (!trouve && i<listeDesLivres.size()) {
+			livre = listeDesLivres.get(i)
+			if (rangL == livre.rang) trouve = true
+			i++
+		}
+
+		livre
+	}
+	
+	
+	/**
 	 * Permet d'obtenir tout les type de documents
 	 * @return
 	 */
 	def getTypesDeDocuments(){
-		
+
 		return TypeDocument.findAll()
 	}
-	
 }

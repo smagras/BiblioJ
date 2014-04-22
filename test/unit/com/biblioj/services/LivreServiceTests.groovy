@@ -5,14 +5,13 @@ import pjbiblioj.Livre
 import pjbiblioj.TypeDocument;
 
 
+
 /**
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
 @TestFor(LivreService)
 @Mock( [Auteur,Livre,TypeDocument] )
 class LivreServiceTests {
-	
-	
 	
 	TypeDocument typeDoc1
 	TypeDocument typeDoc2
@@ -73,6 +72,7 @@ class LivreServiceTests {
 		assert true == true
 		
 	}
+	
 	
 	
 }
