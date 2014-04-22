@@ -12,17 +12,21 @@ class ReservationService {
 	 * @param panier
 	 * @return
 	 */
-	def  obtenirReservation(ArrayList<Livre> livres){
+	def obtenirReservation(ArrayList<Livre> livres){
 		
 		Reservation reservation = new Reservation()
 		
 		livres.each {
 			it.setNombreExemplairesDisponibles(it.getNombreExemplairesDisponibles() - 1)
 		}
-		
+		Date maDate = new Date();
+		maDate.next() 
+		reservation.setDateReservation(maDate)
 		reservation.getLivres().addAll(livres)
 		
 		println reservation.getLivres()
+		
+		
 		
 		return reservation
 		

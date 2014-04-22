@@ -72,7 +72,7 @@
 							Livre l = listeLivres.get(i);
 							
 							if (l.nombreExemplairesDisponibles > 0) {
-								out.print("<a href='../panier/ajouter?livre="+l.rang+"'>" + l.titre + " " + l.auteurs.nom + 
+								out.print("<a href='/../PJBiblioJ/panier/ajouter?livre="+l.rang+"'>" + l.titre + " " + l.auteurs.nom + 
 									" " + l.typeDoc.intitule + " " + l.nombreExemplairesDisponibles + "</a> <br/>");
 							}
 							else {

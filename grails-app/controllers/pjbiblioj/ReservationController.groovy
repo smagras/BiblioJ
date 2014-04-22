@@ -30,8 +30,8 @@ class ReservationController {
 					
 					def livres = serviceReservation.getLivresReservationPossible(utilisateur)
 					
-					serviceReservation.obtenirReservation(livres)
-
+					Reservation reservation = serviceReservation.obtenirReservation(livres)
+					service.ajouterReservation(session,reservation)
 					service.viderPanier(session)
 					
 				}	
@@ -70,8 +70,9 @@ class ReservationController {
 		Utilisateur utilisateur = service.getUtilisateurConnecter(session)
 		
 		if (utilisateur){
-			
-			//utilisateur.getReservations(HttpSession mySession)
+			println "okjyuuy"
+			def reservations = service.getReservations( session)
+			params.reservationsLivres = reservations
 		}
 		else
 		{

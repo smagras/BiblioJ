@@ -1,5 +1,6 @@
 <%@ page import="pjbiblioj.Livre" %>
 <%@ page import="pjbiblioj.Auteur" %>
+<%@ page import="pjbiblioj.Reservation" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 
@@ -28,6 +29,28 @@
 				<h3>Mes réservations</h3>
 				
 				
+				
+				<%
+					def reservationsLivres = params["reservationsLivres"]
+				
+					if (reservationsLivres){
+				
+			
+						
+						reservationsLivres.each{
+							Reservation reservation = it
+							out.print "<h4>"
+							out.print " ( CODE : " + reservation.getCode() + " ) Réservation disponible dès " + reservation.getDateReservation() + "</h4>"
+							
+							reservation.getLivres().each{ livre ->
+								out.print "- " + livre.getTitre() + "<br/>"
+							}
+				
+							
+							
+						}
+					}
+				 %>
 
 
 				<div align="left"></div>

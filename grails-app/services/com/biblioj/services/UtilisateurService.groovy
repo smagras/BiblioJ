@@ -95,15 +95,25 @@ class UtilisateurService {
 		
 	}
 	
+	def ajouterReservation(HttpSession mySession,Reservation reservation){
+		Utilisateur utilisateur = getUtilisateurConnecter(mySession)
+		
+		utilisateur.getReservations().add(reservation)
+		utilisateur.save(flush: true)
+	}
+	
 	def getReservations(HttpSession mySession){
 		def reservations = new ArrayList<Reservation>()
 		
 		Utilisateur utilisateur = getUtilisateurConnecter(mySession)
 		
 		if (utilisateur){
-			//def res = utilisateur
+			def res = utilisateur.getReservations()
 
-			return true
+			res.each{
+				reservations.add(it)
+			}
+			
 		}
 		
 		return reservations
