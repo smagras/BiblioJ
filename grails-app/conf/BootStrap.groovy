@@ -21,7 +21,6 @@ class BootStrap {
 		steve.save(flush: true)
 		
 		
-		
 		CSVManager csvMan = new CSVManager()
 		List<Livre> listLivres = csvMan.getLivres()
 		
