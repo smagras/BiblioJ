@@ -56,10 +56,10 @@
 						livresPanier.each{
 				
 								if (it){
-									htmlCode += "<a href='../panier/afficher?see="+it.getTitre()+"'>"
+									htmlCode += "<a href='/../PJBiblioJ/panier/afficher?see="+it.getRang()+"'>"
 									htmlCode += "<img src='${resource(dir: 'images', file: 'icone_oeil.gif')}' style='width:20px;height:15px'  />"
 									htmlCode += "</a> "
-									htmlCode += "<a href='../panier/afficher?delete="+it.getTitre()+"'>"
+									htmlCode += "<a href='/../PJBiblioJ/panier/afficher?delete="+it.getRang()+"'>"
 									htmlCode += "<img src='${resource(dir: 'images', file: 'IC113990.gif')}' style='width:15px;height:15px'  />"
 									htmlCode += "</a> "
 									htmlCode += it.getTitre() + "</br>"

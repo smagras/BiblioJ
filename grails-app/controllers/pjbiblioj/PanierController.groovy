@@ -38,7 +38,8 @@ class PanierController {
 			
 			def see = params["see"]
 			if (see){
-				Livre livreSee = Livre.findByTitre(see)
+				LivreService serviceL = new LivreService()
+				Livre livreSee = serviceL.rechercherLivreRang(see)
 				params.livresEnVue = livreSee
 				
 			}
