@@ -36,7 +36,7 @@
 				</a></li>
 				<li style="margin-left: 50px"><a href="/../PJBiblioJ/livre/rechercher/">Livres</a></li>
 				<li><a href="/../PJBiblioJ/panier/afficher">Mon Panier</a></li>
-				<li><a href="monTrajet">Mon Trajet</a></li>
+				<li><a href="/../PJBiblioJ/reservation/afficher">Mes réservations</a></li>
 			</ul>
 		</nav>
 		</header>

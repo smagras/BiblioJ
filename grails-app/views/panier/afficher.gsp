@@ -67,9 +67,18 @@
 		
 								
 							}
-							
+						if (!livresPanier.isEmpty()){
+							htmlCode += "<br>"
+							htmlCode += "<br>"
+							htmlCode += "<a href='/../PJBiblioJ/reservation/ajouter' >"
+							htmlCode += "<input type='button'  value='Reserver' width=250 class='coolButton' />"
+							htmlCode += "<a/>"
+						}
 						out.print(htmlCode)
 				
+					}
+					else{
+						out.print("Aucun livres dans le panier.")
 					}
 				%>
 				<div align="left"></div>

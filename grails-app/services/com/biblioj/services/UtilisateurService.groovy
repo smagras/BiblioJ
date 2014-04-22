@@ -8,6 +8,7 @@ import org.codehaus.groovy.grails.web.util.WebUtils
 import org.springframework.web.context.request.RequestContextHolder
 
 import pjbiblioj.Panier
+import pjbiblioj.Reservation
 import pjbiblioj.Utilisateur
 
 class UtilisateurService {
@@ -24,6 +25,7 @@ class UtilisateurService {
 		
 		return false
 	}
+	
 	
 	def inscrire(String pidentifiant,String pmotDePasse,String pnom){
 		
@@ -76,6 +78,21 @@ class UtilisateurService {
 		}
 		
 		return false
+		
+	}
+	
+	def getReservations(HttpSession mySession){
+		def reservations = new ArrayList<Reservation>()
+		
+		Utilisateur utilisateur = getUtilisateurConnecter(mySession)
+		
+		if (utilisateur){
+			//def res = utilisateur
+
+			return true
+		}
+		
+		return reservations
 		
 	}
 	
