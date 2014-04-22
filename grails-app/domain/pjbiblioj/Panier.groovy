@@ -28,7 +28,8 @@ class Panier {
 		livres.remove(livre)
 	}
 	
-	def vider(){
+	
+	def vider() {
 		livres.clear();
 	}
 }

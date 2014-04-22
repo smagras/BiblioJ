@@ -2,9 +2,31 @@ package com.biblioj.services
 
 import pjbiblioj.Livre
 import pjbiblioj.Panier
+import pjbiblioj.Reservation
 import pjbiblioj.Utilisateur
 
 class ReservationService {
+	
+	/**
+	 * Permet de crée une réservation en fonction de livres
+	 * @param panier
+	 * @return
+	 */
+	def  obtenirReservation(ArrayList<Livre> livres){
+		
+		Reservation reservation = new Reservation()
+		
+		livres.each {
+			it.setNombreExemplairesDisponibles(it.getNombreExemplairesDisponibles() - 1)
+		}
+		
+		reservation.getLivres().addAll(livres)
+		
+		println reservation.getLivres()
+		
+		return reservation
+		
+	}
 
 	/**
 	 * Permet d'obtenir les livre possible a réserver

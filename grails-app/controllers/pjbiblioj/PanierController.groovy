@@ -26,6 +26,8 @@ class PanierController {
 		if (utilisateurConnecter){
 			
 			Panier monPanier = utilisateurConnecter.getPanier()
+			HashSet<Livre> livresPanier = monPanier.getLivres()
+			params.livresPanier = livresPanier
 			
 			def deleteP = params["delete"]
 			if (deleteP){
@@ -37,8 +39,6 @@ class PanierController {
 			def see = params["see"]
 			if (see){
 				Livre livreSee = Livre.findByTitre(see)
-				HashSet<Livre> livresPanier = monPanier.getLivres()
-				params.livresPanier = livresPanier
 				params.livresEnVue = livreSee
 				
 			}
@@ -59,10 +59,7 @@ class PanierController {
 		String rangLivre = params["livre"]
 		Livre livre = servicePourLivre.rechercherLivreRang(rangLivre)
 		
-		if (utilisateurConnecter) {
-			Panier monPanier = utilisateurConnecter.getPanier()
-			monPanier.addLivre(livre)
-		}
+		utilisateurService.ajouterPanier(session, livre)
 		
 		redirect(uri: request.getHeader('referer'))
 	}

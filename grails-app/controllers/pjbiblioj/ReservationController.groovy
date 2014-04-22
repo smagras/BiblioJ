@@ -1,5 +1,7 @@
 package pjbiblioj
 
+import javax.servlet.http.HttpSession;
+
 import com.biblioj.services.ReservationService
 import com.biblioj.services.UtilisateurService
 
@@ -14,29 +16,67 @@ class ReservationController {
     }
 	
 	def actionUtilisateur(){
-		def order = params["order"]
-		if (order){
-			
-			UtilisateurService service = new UtilisateurService()
-			
-			if (order == "v"){
-				service.viderPanier(session)
-				redirect(uri: '/../PJBiblioJ/livre/rechercher' )
+		
+		UtilisateurService service = new UtilisateurService()
+		Utilisateur utilisateur = service.getUtilisateurConnecter(session)
+		
+		if (utilisateur){
+
+			def order = params["order"]
+			if (order){
+				if (order == "v"){
+					
+					ReservationService serviceReservation = new ReservationService()
+					
+					def livres = serviceReservation.getLivresReservationPossible(utilisateur)
+					
+					serviceReservation.obtenirReservation(livres)
+
+					service.viderPanier(session)
+					
+				}	
 			}
+		
+		}
+		redirect(uri: '/../PJBiblioJ/reservation/afficher' )
+	}
+	
+	def ajouter(){
+		
+		UtilisateurService service = new UtilisateurService()
+		Utilisateur utilisateur = service.getUtilisateurConnecter(session)
+		
+		if (utilisateur){
+			
+			ReservationService serviceReservation = new ReservationService()
+			
+			UtilisateurService utilisateurService = new UtilisateurService()
+			Utilisateur utilisateurConnecter =  utilisateurService.getUtilisateurConnecter(session)
+			
+			ArrayList<Livre> livresImpossibles = serviceReservation.getLivresReservationImpossible(utilisateurConnecter)
+			ArrayList<Livre> livresPossibles = serviceReservation.getLivresReservationPossible(utilisateurConnecter)
+			
+			params.livresImpossibles = livresImpossibles
+			params.livresPossibles = livresPossibles
+		
+		}
+		else{
+			redirect(uri: '/../PJBiblioJ/livre/rechercher' )
 		}
 	}
 	
 	def afficher(){
-		ReservationService serviceReservation = new ReservationService()
+		UtilisateurService service = new UtilisateurService()
+		Utilisateur utilisateur = service.getUtilisateurConnecter(session)
 		
-		UtilisateurService utilisateurService = new UtilisateurService()
-		Utilisateur utilisateurConnecter =  utilisateurService.getUtilisateurConnecter(session)
-		
-		ArrayList<Livre> livresImpossibles = serviceReservation.getLivresReservationImpossible(utilisateurConnecter)
-		ArrayList<Livre> livresPossibles = serviceReservation.getLivresReservationPossible(utilisateurConnecter)
-		
-		params.livresImpossibles = livresImpossibles
-		params.livresPossibles = livresPossibles
+		if (utilisateur){
+			
+			//utilisateur.getReservations(HttpSession mySession)
+		}
+		else
+		{
+			redirect(uri: '/../PJBiblioJ/livre/rechercher' )
+		}	
 
 	}
 
