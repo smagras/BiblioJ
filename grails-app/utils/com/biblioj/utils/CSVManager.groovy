@@ -48,7 +48,7 @@ class CSVManager {
 		HashMap<String,TypeDocument> uniqueTypeDocument = new HashMap<String,TypeDocument>()
 		
 		if (fichierCSV.exists()) {
-			String content = fichierCSV.getText("UTF-8") 
+			String content = fichierCSV.getText("ISO-8859-15") 
 			
 			content.splitEachLine(';') { row ->	
 				

@@ -23,6 +23,7 @@ class ReservationService {
 		maDate.next() 
 		reservation.setDateReservation(maDate)
 		reservation.getLivres().addAll(livres)
+		//reservation.setCode(reservation.id)
 		
 		println reservation.getLivres()
 		
