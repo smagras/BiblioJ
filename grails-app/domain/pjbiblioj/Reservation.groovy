@@ -10,8 +10,13 @@ class Reservation {
 	
 	static hasMany = [livres:Livre]
 	static constraints = {
-		code blank: false, unique: true
+		code blank: false, nullable: false, unique: true
 		//dateReservation
 		livres nullable: true
     }
+	
+	static mapping = {
+		//id column: 'reservation_id', generator: 'assigned'
+		code generator: 'increment'
+	}
 }

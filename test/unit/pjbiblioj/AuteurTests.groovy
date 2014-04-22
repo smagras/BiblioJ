@@ -12,6 +12,13 @@ import org.junit.*
 class AuteurTests {
 
     void testSomething() {
-       fail "Implement me"
+	   
+       Auteur auteur = new Auteur(nom:"tudou",prenom:"paul",livres:null)
+	   assertEquals auteur.nom, "tudou" 
+	   assertEquals auteur.prenom, "paul"
+	   assertEquals auteur.livres, null
+	   auteur.save()
+	   
+	   assertTrue auteur.validate()
     }
 }
