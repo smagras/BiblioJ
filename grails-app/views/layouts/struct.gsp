@@ -81,7 +81,7 @@
 		
 				
 				
-				<form action="../utilisateur/connexion" method="get">
+				<form action="/../PJBiblioJ/utilisateur/connexion" method="get">
 					<% 
 					String htmlCode =""
 					
